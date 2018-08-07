@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C74BB2272C8649BBFCFBA42 /* Pods_MarysWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */; };
+		8DE565F3A1E39D3192A4770C /* Pods_MarysWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */; };
+		942E741ABDA5C106419047E2 /* Pods_MarysWatchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */; };
+		BF62C98A2117801D00952242 /* ProfileDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C9892117801D00952242 /* ProfileDataController.swift */; };
+		BF62C98C2117804500952242 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98B2117804500952242 /* User.swift */; };
+		BF62C98E2117E28B00952242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF62C98D2117E28B00952242 /* GoogleService-Info.plist */; };
+		BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */; };
 		BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8275382113B78C0068CD56 /* AppDelegate.swift */; };
 		BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82753A2113B78C0068CD56 /* ViewController.swift */; };
 		BF82753E2113B78C0068CD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF82753C2113B78C0068CD56 /* Main.storyboard */; };
@@ -14,6 +21,21 @@
 		BF8275432113B7C90068CD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */; };
 		BF82754E2113B7CB0068CD56 /* MarysWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82754D2113B7CB0068CD56 /* MarysWatchTests.swift */; };
 		BF8275592113B7CB0068CD56 /* MarysWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8275582113B7CB0068CD56 /* MarysWatchUITests.swift */; };
+		BF8E3F312113C47100B1F133 /* OwnerTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */; };
+		BF8E3F322113C47100B1F133 /* OwnerTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */; };
+		BF8E3F332113C47100B1F133 /* OwnerAssetsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F242113C46A00B1F133 /* OwnerAssetsViewCell.swift */; };
+		BF8E3F342113C47100B1F133 /* OwnerAssetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F252113C46B00B1F133 /* OwnerAssetsController.swift */; };
+		BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */; };
+		BF8E3F362113C47100B1F133 /* OwnerTeamDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F272113C46C00B1F133 /* OwnerTeamDisplayController.swift */; };
+		BF8E3F372113C47100B1F133 /* OwnerTeamViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F282113C46C00B1F133 /* OwnerTeamViewCell.swift */; };
+		BF8E3F382113C47100B1F133 /* OwnerCustomers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F292113C46D00B1F133 /* OwnerCustomers.storyboard */; };
+		BF8E3F392113C47100B1F133 /* OwnerAssets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F2A2113C46D00B1F133 /* OwnerAssets.storyboard */; };
+		BF8E3F3A2113C47100B1F133 /* OwnerCustomersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */; };
+		BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2C2113C46E00B1F133 /* CompanyDetailsController.swift */; };
+		BF8E3F3C2113C47100B1F133 /* OwnerCustomerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */; };
+		BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */; };
+		BF8E3F3E2113C47100B1F133 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */; };
+		BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +56,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarysWatchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarysWatchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DEE3F1A34F7206EB884432F /* Pods-MarysWatchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchUITests/Pods-MarysWatchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		73C7D777B7D8E0649AB51052 /* Pods-MarysWatchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchTests/Pods-MarysWatchTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarysWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACA6E2E43C1BAA84F72BD15E /* Pods-MarysWatchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchUITests/Pods-MarysWatchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BF62C9892117801D00952242 /* ProfileDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataController.swift; sourceTree = "<group>"; };
+		BF62C98B2117804500952242 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF62C98D2117E28B00952242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileDetailsController.swift; sourceTree = "<group>"; };
 		BF8275352113B78C0068CD56 /* MarysWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarysWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8275382113B78C0068CD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF82753A2113B78C0068CD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +79,24 @@
 		BF8275542113B7CB0068CD56 /* MarysWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarysWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8275582113B7CB0068CD56 /* MarysWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarysWatchUITests.swift; sourceTree = "<group>"; };
 		BF82755A2113B7CB0068CD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerTeamController.swift; sourceTree = "<group>"; };
+		BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerTeam.storyboard; sourceTree = "<group>"; };
+		BF8E3F242113C46A00B1F133 /* OwnerAssetsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerAssetsViewCell.swift; sourceTree = "<group>"; };
+		BF8E3F252113C46B00B1F133 /* OwnerAssetsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerAssetsController.swift; sourceTree = "<group>"; };
+		BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerEditProfileController.swift; sourceTree = "<group>"; };
+		BF8E3F272113C46C00B1F133 /* OwnerTeamDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerTeamDisplayController.swift; sourceTree = "<group>"; };
+		BF8E3F282113C46C00B1F133 /* OwnerTeamViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerTeamViewCell.swift; sourceTree = "<group>"; };
+		BF8E3F292113C46D00B1F133 /* OwnerCustomers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerCustomers.storyboard; sourceTree = "<group>"; };
+		BF8E3F2A2113C46D00B1F133 /* OwnerAssets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerAssets.storyboard; sourceTree = "<group>"; };
+		BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerCustomersController.swift; sourceTree = "<group>"; };
+		BF8E3F2C2113C46E00B1F133 /* CompanyDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyDetailsController.swift; sourceTree = "<group>"; };
+		BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerCustomerViewCell.swift; sourceTree = "<group>"; };
+		BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersCustomerDisplayController.swift; sourceTree = "<group>"; };
+		BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
+		BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerAssetsDisplayController.swift; sourceTree = "<group>"; };
+		C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.release.xcconfig"; sourceTree = "<group>"; };
+		C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		D80896525B5B90F46C0E76A4 /* Pods-MarysWatchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchTests/Pods-MarysWatchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C74BB2272C8649BBFCFBA42 /* Pods_MarysWatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE565F3A1E39D3192A4770C /* Pods_MarysWatchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,19 +120,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942E741ABDA5C106419047E2 /* Pods_MarysWatchUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13A41558B8FCDD12CD8939E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */,
+				C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */,
+				D80896525B5B90F46C0E76A4 /* Pods-MarysWatchTests.debug.xcconfig */,
+				73C7D777B7D8E0649AB51052 /* Pods-MarysWatchTests.release.xcconfig */,
+				6DEE3F1A34F7206EB884432F /* Pods-MarysWatchUITests.debug.xcconfig */,
+				ACA6E2E43C1BAA84F72BD15E /* Pods-MarysWatchUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		14B2BAE5361E7B89687C6952 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */,
+				2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */,
+				1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF82752C2113B78C0068CD56 = {
 			isa = PBXGroup;
 			children = (
 				BF8275372113B78C0068CD56 /* MarysWatch */,
+				BF8E3F1A2113C2A500B1F133 /* Owners */,
+				BF8E3F1B2113C2AD00B1F133 /* Renters */,
+				BF8E3F1C2113C2B300B1F133 /* ServicePros */,
+				BF8E3F402113C4DF00B1F133 /* Model */,
 				BF82754C2113B7CB0068CD56 /* MarysWatchTests */,
 				BF8275572113B7CB0068CD56 /* MarysWatchUITests */,
 				BF8275362113B78C0068CD56 /* Products */,
+				13A41558B8FCDD12CD8939E2 /* Pods */,
+				14B2BAE5361E7B89687C6952 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +185,7 @@
 				BF82753F2113B7C90068CD56 /* Assets.xcassets */,
 				BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */,
 				BF8275442113B7C90068CD56 /* Info.plist */,
+				BF62C98D2117E28B00952242 /* GoogleService-Info.plist */,
 			);
 			path = MarysWatch;
 			sourceTree = "<group>";
@@ -125,6 +208,76 @@
 			path = MarysWatchUITests;
 			sourceTree = "<group>";
 		};
+		BF8E3F1A2113C2A500B1F133 /* Owners */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E3F1D2113C2DF00B1F133 /* Manage My Account */,
+			);
+			path = Owners;
+			sourceTree = "<group>";
+		};
+		BF8E3F1B2113C2AD00B1F133 /* Renters */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E3F1E2113C2EC00B1F133 /* Manage My Account */,
+			);
+			path = Renters;
+			sourceTree = "<group>";
+		};
+		BF8E3F1C2113C2B300B1F133 /* ServicePros */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E3F1F2113C2F600B1F133 /* Manage My Account */,
+			);
+			path = ServicePros;
+			sourceTree = "<group>";
+		};
+		BF8E3F1D2113C2DF00B1F133 /* Manage My Account */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E3F2C2113C46E00B1F133 /* CompanyDetailsController.swift */,
+				BF8E3F2A2113C46D00B1F133 /* OwnerAssets.storyboard */,
+				BF8E3F252113C46B00B1F133 /* OwnerAssetsController.swift */,
+				BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */,
+				BF8E3F242113C46A00B1F133 /* OwnerAssetsViewCell.swift */,
+				BF8E3F292113C46D00B1F133 /* OwnerCustomers.storyboard */,
+				BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */,
+				BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */,
+				BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */,
+				BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */,
+				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
+				BF62C9892117801D00952242 /* ProfileDataController.swift */,
+				BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */,
+				BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */,
+				BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */,
+				BF8E3F272113C46C00B1F133 /* OwnerTeamDisplayController.swift */,
+				BF8E3F282113C46C00B1F133 /* OwnerTeamViewCell.swift */,
+			);
+			path = "Manage My Account";
+			sourceTree = "<group>";
+		};
+		BF8E3F1E2113C2EC00B1F133 /* Manage My Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Manage My Account";
+			sourceTree = "<group>";
+		};
+		BF8E3F1F2113C2F600B1F133 /* Manage My Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Manage My Account";
+			sourceTree = "<group>";
+		};
+		BF8E3F402113C4DF00B1F133 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF62C98B2117804500952242 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +285,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF82755D2113B7CB0068CD56 /* Build configuration list for PBXNativeTarget "MarysWatch" */;
 			buildPhases = (
+				AE6443B2F37C2743AE98750A /* [CP] Check Pods Manifest.lock */,
 				BF8275312113B78C0068CD56 /* Sources */,
 				BF8275322113B78C0068CD56 /* Frameworks */,
 				BF8275332113B78C0068CD56 /* Resources */,
+				8197DE64615ED8D8256EB3DF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +304,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF8275602113B7CB0068CD56 /* Build configuration list for PBXNativeTarget "MarysWatchTests" */;
 			buildPhases = (
+				92DE85F2B7DAA6F48366A681 /* [CP] Check Pods Manifest.lock */,
 				BF8275452113B7CB0068CD56 /* Sources */,
 				BF8275462113B7CB0068CD56 /* Frameworks */,
 				BF8275472113B7CB0068CD56 /* Resources */,
@@ -167,6 +323,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF8275632113B7CB0068CD56 /* Build configuration list for PBXNativeTarget "MarysWatchUITests" */;
 			buildPhases = (
+				5791621E43D9A5DBA1C8BCB7 /* [CP] Check Pods Manifest.lock */,
 				BF8275502113B7CB0068CD56 /* Sources */,
 				BF8275512113B7CB0068CD56 /* Frameworks */,
 				BF8275522113B7CB0068CD56 /* Resources */,
@@ -230,8 +387,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF8275432113B7C90068CD56 /* LaunchScreen.storyboard in Resources */,
+				BF62C98E2117E28B00952242 /* GoogleService-Info.plist in Resources */,
 				BF8275402113B7C90068CD56 /* Assets.xcassets in Resources */,
+				BF8E3F3E2113C47100B1F133 /* OwnerProfile.storyboard in Resources */,
+				BF8E3F392113C47100B1F133 /* OwnerAssets.storyboard in Resources */,
+				BF8E3F382113C47100B1F133 /* OwnerCustomers.storyboard in Resources */,
 				BF82753E2113B78C0068CD56 /* Main.storyboard in Resources */,
+				BF8E3F322113C47100B1F133 /* OwnerTeam.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +413,120 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5791621E43D9A5DBA1C8BCB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarysWatchUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8197DE64615ED8D8256EB3DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92DE85F2B7DAA6F48366A681 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarysWatchTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE6443B2F37C2743AE98750A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarysWatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BF8275312113B78C0068CD56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8E3F342113C47100B1F133 /* OwnerAssetsController.swift in Sources */,
+				BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */,
+				BF8E3F362113C47100B1F133 /* OwnerTeamDisplayController.swift in Sources */,
 				BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */,
+				BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */,
+				BF8E3F332113C47100B1F133 /* OwnerAssetsViewCell.swift in Sources */,
+				BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */,
+				BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */,
+				BF62C98A2117801D00952242 /* ProfileDataController.swift in Sources */,
+				BF62C98C2117804500952242 /* User.swift in Sources */,
 				BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */,
+				BF8E3F312113C47100B1F133 /* OwnerTeamController.swift in Sources */,
+				BF8E3F3A2113C47100B1F133 /* OwnerCustomersController.swift in Sources */,
+				BF8E3F3C2113C47100B1F133 /* OwnerCustomerViewCell.swift in Sources */,
+				BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */,
+				BF8E3F372113C47100B1F133 /* OwnerTeamViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +697,7 @@
 		};
 		BF82755E2113B7CB0068CD56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +715,7 @@
 		};
 		BF82755F2113B7CB0068CD56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,6 +733,7 @@
 		};
 		BF8275612113B7CB0068CD56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D80896525B5B90F46C0E76A4 /* Pods-MarysWatchTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,6 +754,7 @@
 		};
 		BF8275622113B7CB0068CD56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C7D777B7D8E0649AB51052 /* Pods-MarysWatchTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +775,7 @@
 		};
 		BF8275642113B7CB0068CD56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DEE3F1A34F7206EB884432F /* Pods-MarysWatchUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +795,7 @@
 		};
 		BF8275652113B7CB0068CD56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACA6E2E43C1BAA84F72BD15E /* Pods-MarysWatchUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

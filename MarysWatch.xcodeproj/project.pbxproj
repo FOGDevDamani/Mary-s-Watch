@@ -14,6 +14,9 @@
 		BF62C98C2117804500952242 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98B2117804500952242 /* User.swift */; };
 		BF62C98E2117E28B00952242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF62C98D2117E28B00952242 /* GoogleService-Info.plist */; };
 		BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */; };
+		BF62C992211A2E9E00952242 /* OwnersProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C991211A2E9E00952242 /* OwnersProfileController.swift */; };
+		BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */; };
+		BF62C996211BD85400952242 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C995211BD85300952242 /* CameraController.swift */; };
 		BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8275382113B78C0068CD56 /* AppDelegate.swift */; };
 		BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82753A2113B78C0068CD56 /* ViewController.swift */; };
 		BF82753E2113B78C0068CD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF82753C2113B78C0068CD56 /* Main.storyboard */; };
@@ -66,6 +69,9 @@
 		BF62C98B2117804500952242 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF62C98D2117E28B00952242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileDetailsController.swift; sourceTree = "<group>"; };
+		BF62C991211A2E9E00952242 /* OwnersProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersProfileController.swift; sourceTree = "<group>"; };
+		BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersProfileCell.swift; sourceTree = "<group>"; };
+		BF62C995211BD85300952242 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		BF8275352113B78C0068CD56 /* MarysWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarysWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8275382113B78C0068CD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF82753A2113B78C0068CD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +250,9 @@
 				BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */,
 				BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */,
 				BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */,
+				BF62C991211A2E9E00952242 /* OwnersProfileController.swift */,
+				BF62C995211BD85300952242 /* CameraController.swift */,
+				BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */,
 				BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */,
 				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
 				BF62C9892117801D00952242 /* ProfileDataController.swift */,
@@ -520,11 +529,14 @@
 				BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */,
 				BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */,
 				BF62C98A2117801D00952242 /* ProfileDataController.swift in Sources */,
+				BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */,
 				BF62C98C2117804500952242 /* User.swift in Sources */,
 				BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */,
 				BF8E3F312113C47100B1F133 /* OwnerTeamController.swift in Sources */,
 				BF8E3F3A2113C47100B1F133 /* OwnerCustomersController.swift in Sources */,
 				BF8E3F3C2113C47100B1F133 /* OwnerCustomerViewCell.swift in Sources */,
+				BF62C992211A2E9E00952242 /* OwnersProfileController.swift in Sources */,
+				BF62C996211BD85400952242 /* CameraController.swift in Sources */,
 				BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */,
 				BF8E3F372113C47100B1F133 /* OwnerTeamViewCell.swift in Sources */,
 			);
@@ -701,6 +713,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8HWGTPK72S;
 				INFOPLIST_FILE = MarysWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,6 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8HWGTPK72S;
 				INFOPLIST_FILE = MarysWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

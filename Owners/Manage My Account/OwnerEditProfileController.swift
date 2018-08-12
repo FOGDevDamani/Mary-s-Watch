@@ -45,16 +45,9 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
         guard let zipCode = zipCode.text, !zipCode.isEmpty else {return}
         guard let county = county.text, !county.isEmpty else {return}
         
-        let dataToSave: [String: Any] = ["firstName": firstName,
-                                         "lastName": lastName,
-                                         "email": email,
-                                         "cellPhone": cellPhone,
-                                         "address": address,
-                                         "state": state,
-                                         "city": city,
-                                         "zipCode": zipCode,
-                                         "county": county]
-        reference.document("qYddEMg9j2PxaxKocb3D").setData(dataToSave)
+        let newProfile = User(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, city: city, state: state, county: county)
+        
+        reference.document("qYddEMg9j2PxaxKocb3D").setData(newProfile.dicitonary)
         
         dismissViewController()
     }
@@ -62,5 +55,80 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     func dismissViewController() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstName {
+            lastName.becomeFirstResponder()
+        } else if textField == lastName {
+            email.becomeFirstResponder()
+        } else if textField == email {
+            cellPhone.becomeFirstResponder()
+        } else if textField == cellPhone {
+            address.becomeFirstResponder()
+        } else if textField == address {
+            state.becomeFirstResponder()
+        } else if textField == state {
+            city.becomeFirstResponder()
+        } else if textField == city {
+            zipCode.becomeFirstResponder()
+        } else if textField == zipCode {
+            county.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -100,7 +100,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r6g-LT-QX4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8f4-Vo-g3j"/>
+                    <navigationItem key="navigationItem" id="8f4-Vo-g3j">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="koY-wa-YxC">
+                            <connections>
+                                <action selector="signOutProfile:" destination="1O2-lk-KXt" id="QFK-ph-gIb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ownersProfile" destination="b8d-hr-fi1" id="jpI-cV-Y3h"/>
                     </connections>
@@ -261,7 +267,7 @@
         <!--Owner Edit Profile Controller-->
         <scene sceneID="UfG-HI-nh5">
             <objects>
-                <viewController storyboardIdentifier="Owner-My Profile" id="s67-Sl-qSv" customClass="OwnerEditProfileController" customModule="MarysWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OwnerEditProfileController" id="s67-Sl-qSv" customClass="OwnerEditProfileController" customModule="MarysWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="42y-ff-p6u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -557,7 +563,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitSettings:" destination="s67-Sl-qSv" eventType="touchUpInside" id="i1r-6G-FSI"/>
+                                            <action selector="saveSettings:" destination="s67-Sl-qSv" eventType="touchUpInside" id="i1r-6G-FSI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpV-Jl-cFq">
@@ -736,18 +742,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="kk4-ue-nQp"/>
                     <connections>
-                        <outlet property="address" destination="3Xw-Wf-DBg" id="MPU-Wd-ncc"/>
-                        <outlet property="cellPhone" destination="DgR-DA-4kc" id="flb-vf-7gr"/>
-                        <outlet property="city" destination="KoH-bU-N1t" id="609-FQ-93V"/>
-                        <outlet property="county" destination="lMs-2r-fjM" id="trt-NN-HkG"/>
-                        <outlet property="email" destination="rJv-Sw-feN" id="kzz-M3-Vro"/>
-                        <outlet property="firstName" destination="PmX-cV-mMw" id="FtK-g8-HLQ"/>
-                        <outlet property="lastName" destination="q2y-Ef-OyQ" id="1Nx-jg-1P6"/>
-                        <outlet property="password" destination="qFn-fy-m96" id="sID-9n-shw"/>
-                        <outlet property="state" destination="X4b-7Z-Wdl" id="IQb-pw-QlE"/>
-                        <outlet property="typeOfOwner" destination="kqt-kf-uDs" id="P6t-MG-8LW"/>
-                        <outlet property="userName" destination="6WS-ED-Zgj" id="gTy-Sl-lEj"/>
-                        <outlet property="zipCode" destination="dIv-6h-l4k" id="c3c-aG-dEc"/>
+                        <outlet property="addressTF" destination="3Xw-Wf-DBg" id="MPU-Wd-ncc"/>
+                        <outlet property="cellPhoneTF" destination="DgR-DA-4kc" id="flb-vf-7gr"/>
+                        <outlet property="cityTF" destination="KoH-bU-N1t" id="609-FQ-93V"/>
+                        <outlet property="countyTF" destination="lMs-2r-fjM" id="trt-NN-HkG"/>
+                        <outlet property="emailTF" destination="rJv-Sw-feN" id="kzz-M3-Vro"/>
+                        <outlet property="firstNameTF" destination="PmX-cV-mMw" id="FtK-g8-HLQ"/>
+                        <outlet property="lastNameTF" destination="q2y-Ef-OyQ" id="1Nx-jg-1P6"/>
+                        <outlet property="passwordTF" destination="qFn-fy-m96" id="sID-9n-shw"/>
+                        <outlet property="stateTF" destination="X4b-7Z-Wdl" id="IQb-pw-QlE"/>
+                        <outlet property="typeOfOwnerTF" destination="kqt-kf-uDs" id="P6t-MG-8LW"/>
+                        <outlet property="userNameTF" destination="6WS-ED-Zgj" id="gTy-Sl-lEj"/>
+                        <outlet property="zipCodeTF" destination="dIv-6h-l4k" id="c3c-aG-dEc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWO-Bn-ayh" userLabel="First Responder" sceneMemberID="firstResponder"/>

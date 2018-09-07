@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class OwnersProfileController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -47,7 +48,11 @@ class OwnersProfileController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
- 
+    @IBAction func signOutProfile(_ sender: Any) {
+        try! Auth.auth().signOut()
+        self.dismiss(animated: false, completion: nil)
+    }
+    
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

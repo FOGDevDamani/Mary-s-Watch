@@ -19,7 +19,6 @@
 		BF62C996211BD85400952242 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C995211BD85300952242 /* CameraController.swift */; };
 		BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8275382113B78C0068CD56 /* AppDelegate.swift */; };
 		BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82753A2113B78C0068CD56 /* ViewController.swift */; };
-		BF82753E2113B78C0068CD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF82753C2113B78C0068CD56 /* Main.storyboard */; };
 		BF8275402113B7C90068CD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF82753F2113B7C90068CD56 /* Assets.xcassets */; };
 		BF8275432113B7C90068CD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */; };
 		BF82754E2113B7CB0068CD56 /* MarysWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82754D2113B7CB0068CD56 /* MarysWatchTests.swift */; };
@@ -39,6 +38,11 @@
 		BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */; };
 		BF8E3F3E2113C47100B1F133 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */; };
 		BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */; };
+		BFE2F2B72138BD9600C946A1 /* MWLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */; };
+		BFE2F2BB2138C25000C946A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE2F2BA2138C25000C946A1 /* Main.storyboard */; };
+		BFE2F2BE2138C32C00C946A1 /* ChooseUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */; };
+		BFE2F2BF2138C32C00C946A1 /* LandingPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2BD2138C32C00C946A1 /* LandingPageController.swift */; };
+		BFE2F2C72141E1F400C946A1 /* MWSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2C62141E1F400C946A1 /* MWSignUpController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +79,6 @@
 		BF8275352113B78C0068CD56 /* MarysWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarysWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8275382113B78C0068CD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF82753A2113B78C0068CD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BF82753D2113B78C0068CD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF82753F2113B7C90068CD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF8275422113B7C90068CD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF8275442113B7C90068CD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +103,11 @@
 		BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersCustomerDisplayController.swift; sourceTree = "<group>"; };
 		BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
 		BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerAssetsDisplayController.swift; sourceTree = "<group>"; };
+		BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWLoginController.swift; sourceTree = "<group>"; };
+		BFE2F2BA2138C25000C946A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserController.swift; sourceTree = "<group>"; };
+		BFE2F2BD2138C32C00C946A1 /* LandingPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageController.swift; sourceTree = "<group>"; };
+		BFE2F2C62141E1F400C946A1 /* MWSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWSignUpController.swift; sourceTree = "<group>"; };
 		C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.release.xcconfig"; sourceTree = "<group>"; };
 		C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		D80896525B5B90F46C0E76A4 /* Pods-MarysWatchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchTests/Pods-MarysWatchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,7 +195,9 @@
 			children = (
 				BF8275382113B78C0068CD56 /* AppDelegate.swift */,
 				BF82753A2113B78C0068CD56 /* ViewController.swift */,
-				BF82753C2113B78C0068CD56 /* Main.storyboard */,
+				BFE2F2BA2138C25000C946A1 /* Main.storyboard */,
+				BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */,
+				BFE2F2BD2138C32C00C946A1 /* LandingPageController.swift */,
 				BF82753F2113B7C90068CD56 /* Assets.xcassets */,
 				BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */,
 				BF8275442113B7C90068CD56 /* Info.plist */,
@@ -255,6 +265,8 @@
 				BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */,
 				BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */,
 				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
+				BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */,
+				BFE2F2C62141E1F400C946A1 /* MWSignUpController.swift */,
 				BF62C9892117801D00952242 /* ProfileDataController.swift */,
 				BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */,
 				BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */,
@@ -401,7 +413,7 @@
 				BF8E3F3E2113C47100B1F133 /* OwnerProfile.storyboard in Resources */,
 				BF8E3F392113C47100B1F133 /* OwnerAssets.storyboard in Resources */,
 				BF8E3F382113C47100B1F133 /* OwnerCustomers.storyboard in Resources */,
-				BF82753E2113B78C0068CD56 /* Main.storyboard in Resources */,
+				BFE2F2BB2138C25000C946A1 /* Main.storyboard in Resources */,
 				BF8E3F322113C47100B1F133 /* OwnerTeam.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +533,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF8E3F342113C47100B1F133 /* OwnerAssetsController.swift in Sources */,
+				BFE2F2B72138BD9600C946A1 /* MWLoginController.swift in Sources */,
+				BFE2F2BF2138C32C00C946A1 /* LandingPageController.swift in Sources */,
+				BFE2F2BE2138C32C00C946A1 /* ChooseUserController.swift in Sources */,
 				BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */,
+				BFE2F2C72141E1F400C946A1 /* MWSignUpController.swift in Sources */,
 				BF8E3F362113C47100B1F133 /* OwnerTeamDisplayController.swift in Sources */,
 				BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */,
 				BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */,
@@ -574,14 +590,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BF82753C2113B78C0068CD56 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF82753D2113B78C0068CD56 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
 
 class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var ownerDIsplayNameField: UILabel!
+    @IBOutlet weak var ownerDisplayNameField: UILabel!
     @IBOutlet weak var ownerDisplayPhoneField: UILabel!
     @IBOutlet weak var ownerDisplayEmailField: UILabel!
     @IBOutlet weak var ownerDisplayAddressField: UILabel!
@@ -40,7 +42,7 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
             let fullAddress = "\(currentAddress) \(currentCity) \(currentState), \(currentZipcode)"
             let email = profileData["email"] as? String ?? ""
             let phoneNumber = profileData["cellPhone"] as? String ?? ""
-            self.ownerDIsplayNameField.text = currentName
+            self.ownerDisplayNameField.text = currentName
             self.ownerDisplayAddressField.text = fullAddress
             self.ownerDisplayEmailField.text = email
             self.ownerDisplayPhoneField.text = phoneNumber
@@ -53,6 +55,8 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
     }
     
     @IBAction func changeProfileImage(_ sender: Any) {
+        
+        guard let image = profileImage.image else { return }
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -77,6 +81,19 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
+        
+        self.uploadProfileImage(image) {url in
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.photoURL = url
+            
+            changeRequest?.commitChanges {error in
+                if error == nil {
+                    print("photo changed")
+                } else {
+                    print("Error: \(error!.localizedDescription)")
+                }
+            }
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -90,6 +107,29 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        
+        guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        storageRef.putData(imageData, metadata: metaData) {metaData, error in
+            if error == nil,metaData == nil  {
+                if let url = metaData?.downloadURL() {
+                    completion(url)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    
     
   
     

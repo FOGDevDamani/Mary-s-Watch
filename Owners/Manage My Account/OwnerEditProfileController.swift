@@ -13,18 +13,18 @@ import FirebaseFirestore
 
 class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var typeOfOwner: UITextField!
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var cellPhone: UITextField!
-    @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var state: UITextField!
-    @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var zipCode: UITextField!
-    @IBOutlet weak var county: UITextField!
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var typeOfOwnerTF: UITextField!
+    @IBOutlet weak var firstNameTF: UITextField!
+    @IBOutlet weak var lastNameTF: UITextField!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var cellPhoneTF: UITextField!
+    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var stateTF: UITextField!
+    @IBOutlet weak var cityTF: UITextField!
+    @IBOutlet weak var zipCodeTF: UITextField!
+    @IBOutlet weak var countyTF: UITextField!
+    @IBOutlet weak var userNameTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
     
     var reference: CollectionReference!
 
@@ -34,16 +34,16 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func submitSettings(_ sender: Any) {
-        guard let firstName = firstName.text, !firstName.isEmpty else {return}
-        guard let lastName = lastName.text, !lastName.isEmpty else {return}
-        guard let email = email.text, !email.isEmpty else {return}
-        guard let cellPhone = cellPhone.text, !cellPhone.isEmpty else {return}
-        guard let address = address.text, !address.isEmpty else {return}
-        guard let state = state.text, !state.isEmpty else {return}
-        guard let city = city.text, !city.isEmpty else {return}
-        guard let zipCode = zipCode.text, !zipCode.isEmpty else {return}
-        guard let county = county.text, !county.isEmpty else {return}
+    @IBAction func saveSettings(_ sender: Any) {
+        guard let firstName = firstNameTF.text, !firstName.isEmpty else {return}
+        guard let lastName = lastNameTF.text, !lastName.isEmpty else {return}
+        guard let email = emailTF.text, !email.isEmpty else {return}
+        guard let cellPhone = cellPhoneTF.text, !cellPhone.isEmpty else {return}
+        guard let address = addressTF.text, !address.isEmpty else {return}
+        guard let state = stateTF.text, !state.isEmpty else {return}
+        guard let city = cityTF.text, !city.isEmpty else {return}
+        guard let zipCode = zipCodeTF.text, !zipCode.isEmpty else {return}
+        guard let county = countyTF.text, !county.isEmpty else {return}
         
         let newProfile = User(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, city: city, state: state, county: county)
         
@@ -57,22 +57,22 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == firstName {
-            lastName.becomeFirstResponder()
-        } else if textField == lastName {
-            email.becomeFirstResponder()
-        } else if textField == email {
-            cellPhone.becomeFirstResponder()
-        } else if textField == cellPhone {
-            address.becomeFirstResponder()
-        } else if textField == address {
-            state.becomeFirstResponder()
-        } else if textField == state {
-            city.becomeFirstResponder()
-        } else if textField == city {
-            zipCode.becomeFirstResponder()
-        } else if textField == zipCode {
-            county.becomeFirstResponder()
+        if textField == firstNameTF {
+            lastNameTF.becomeFirstResponder()
+        } else if textField == lastNameTF {
+            emailTF.becomeFirstResponder()
+        } else if textField == emailTF {
+            cellPhoneTF.becomeFirstResponder()
+        } else if textField == cellPhoneTF {
+            addressTF.becomeFirstResponder()
+        } else if textField == addressTF {
+            stateTF.becomeFirstResponder()
+        } else if textField == stateTF {
+            cityTF.becomeFirstResponder()
+        } else if textField == cityTF {
+            zipCodeTF.becomeFirstResponder()
+        } else if textField == zipCodeTF {
+            countyTF.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
@@ -81,32 +81,6 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     }
     
    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
 

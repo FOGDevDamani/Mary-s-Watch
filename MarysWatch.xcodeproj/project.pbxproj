@@ -10,7 +10,7 @@
 		7C74BB2272C8649BBFCFBA42 /* Pods_MarysWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */; };
 		8DE565F3A1E39D3192A4770C /* Pods_MarysWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */; };
 		942E741ABDA5C106419047E2 /* Pods_MarysWatchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */; };
-		BF62C98A2117801D00952242 /* ProfileDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C9892117801D00952242 /* ProfileDataController.swift */; };
+		BF62C98A2117801D00952242 /* UserDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C9892117801D00952242 /* UserDataController.swift */; };
 		BF62C98C2117804500952242 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98B2117804500952242 /* User.swift */; };
 		BF62C98E2117E28B00952242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF62C98D2117E28B00952242 /* GoogleService-Info.plist */; };
 		BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */; };
@@ -69,7 +69,7 @@
 		73C7D777B7D8E0649AB51052 /* Pods-MarysWatchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchTests/Pods-MarysWatchTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarysWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA6E2E43C1BAA84F72BD15E /* Pods-MarysWatchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchUITests/Pods-MarysWatchUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BF62C9892117801D00952242 /* ProfileDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataController.swift; sourceTree = "<group>"; };
+		BF62C9892117801D00952242 /* UserDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataController.swift; sourceTree = "<group>"; };
 		BF62C98B2117804500952242 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF62C98D2117E28B00952242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileDetailsController.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
 				BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */,
 				BFE2F2C62141E1F400C946A1 /* MWSignUpController.swift */,
-				BF62C9892117801D00952242 /* ProfileDataController.swift */,
+				BF62C9892117801D00952242 /* UserDataController.swift */,
 				BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */,
 				BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */,
 				BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */,
@@ -460,7 +460,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -473,7 +478,12 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -544,7 +554,7 @@
 				BF8E3F332113C47100B1F133 /* OwnerAssetsViewCell.swift in Sources */,
 				BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */,
 				BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */,
-				BF62C98A2117801D00952242 /* ProfileDataController.swift in Sources */,
+				BF62C98A2117801D00952242 /* UserDataController.swift in Sources */,
 				BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */,
 				BF62C98C2117804500952242 /* User.swift in Sources */,
 				BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */,

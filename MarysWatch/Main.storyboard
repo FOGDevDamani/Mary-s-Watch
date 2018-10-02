@@ -468,7 +468,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmY-q1-lsg">
-                                        <rect key="frame" x="8.5" y="180" width="359" height="300"/>
+                                        <rect key="frame" x="8" y="180" width="359" height="362"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FaB-cG-8OA">
                                                 <rect key="frame" x="26" y="37" width="323" height="30"/>
@@ -503,7 +503,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8Y-Dm-OsQ">
-                                                <rect key="frame" x="139" y="250" width="97" height="27"/>
+                                                <rect key="frame" x="139" y="307" width="97" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="97" id="4Rv-uO-b1w"/>
                                                     <constraint firstAttribute="height" constant="27" id="maM-rV-BhH"/>
@@ -517,7 +517,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qL6-EH-Tte">
-                                                <rect key="frame" x="125" y="278" width="125" height="27"/>
+                                                <rect key="frame" x="125" y="335" width="125" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="2aj-CV-z79"/>
                                                     <constraint firstAttribute="height" constant="27" id="pFR-Nh-Fwl"/>
@@ -531,7 +531,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXv-Zj-RSm">
-                                                <rect key="frame" x="26" y="193" width="323" height="49"/>
+                                                <rect key="frame" x="26" y="250" width="323" height="49"/>
                                                 <color key="backgroundColor" red="0.30065893469999999" green="0.58373202940000002" blue="0.92221009730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="Y0z-Vd-Uww"/>
@@ -543,11 +543,25 @@
                                                     <action selector="signInWithFacebook:" destination="6oF-sF-ghD" eventType="touchUpInside" id="8dM-8l-rxF"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgU-s4-ssh">
+                                                <rect key="frame" x="26" y="193" width="323" height="49"/>
+                                                <color key="backgroundColor" red="0.30065893469999999" green="0.75663784537222223" blue="0.92221009730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="323" id="lIw-q3-zOz"/>
+                                                    <constraint firstAttribute="height" constant="49" id="lza-T6-wub"/>
+                                                </constraints>
+                                                <state key="normal" title="Login WIth Twitter"/>
+                                                <connections>
+                                                    <action selector="signInWithTwitter:" destination="6oF-sF-ghD" eventType="touchUpInside" id="4DB-2r-FbC"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.69411764710000001" green="0.79607843140000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="qL6-EH-Tte" firstAttribute="centerX" secondItem="jmY-q1-lsg" secondAttribute="centerX" constant="8" id="EwO-Y9-lta"/>
-                                            <constraint firstAttribute="height" constant="300" id="GcT-BR-Vhl"/>
+                                            <constraint firstItem="XgU-s4-ssh" firstAttribute="centerX" secondItem="jmY-q1-lsg" secondAttribute="centerX" constant="8" id="G2s-m7-bUx"/>
+                                            <constraint firstAttribute="height" constant="362" id="GcT-BR-Vhl"/>
+                                            <constraint firstItem="XgU-s4-ssh" firstAttribute="top" secondItem="YjC-97-OgJ" secondAttribute="bottom" constant="8" id="GnA-d9-aZJ"/>
                                             <constraint firstItem="qL6-EH-Tte" firstAttribute="top" secondItem="p8Y-Dm-OsQ" secondAttribute="bottom" constant="1" id="Jni-5w-SMY"/>
                                             <constraint firstItem="YjC-97-OgJ" firstAttribute="centerX" secondItem="jmY-q1-lsg" secondAttribute="centerX" constant="8" id="MJ7-C0-toj"/>
                                             <constraint firstAttribute="width" constant="359" id="OJs-3a-kpf"/>
@@ -557,9 +571,9 @@
                                             <constraint firstItem="p8Y-Dm-OsQ" firstAttribute="centerX" secondItem="jmY-q1-lsg" secondAttribute="centerX" constant="8" id="ioZ-J7-fue"/>
                                             <constraint firstItem="p8Y-Dm-OsQ" firstAttribute="top" secondItem="jXv-Zj-RSm" secondAttribute="bottom" constant="8" id="k56-B7-ofl"/>
                                             <constraint firstItem="FaB-cG-8OA" firstAttribute="centerX" secondItem="jmY-q1-lsg" secondAttribute="centerX" constant="8" id="lPt-Wv-xa7"/>
-                                            <constraint firstItem="jXv-Zj-RSm" firstAttribute="top" secondItem="YjC-97-OgJ" secondAttribute="bottom" constant="8" id="pUv-g9-II8"/>
                                             <constraint firstItem="N5x-6g-5n7" firstAttribute="top" secondItem="FaB-cG-8OA" secondAttribute="bottom" constant="1" id="qin-Y3-422"/>
                                             <constraint firstItem="YjC-97-OgJ" firstAttribute="top" secondItem="N5x-6g-5n7" secondAttribute="bottom" constant="25" id="r07-tu-ZLI"/>
+                                            <constraint firstItem="jXv-Zj-RSm" firstAttribute="top" secondItem="XgU-s4-ssh" secondAttribute="bottom" constant="8" id="zr2-eE-Q30"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sua-VD-bNw">

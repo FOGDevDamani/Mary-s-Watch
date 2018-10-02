@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FacebookCore
 import FacebookLogin
+import TwitterKit
 
 class MWLoginController: UIViewController, UITextFieldDelegate {
     
@@ -40,7 +41,7 @@ class MWLoginController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
         
             if error != nil {
-                let loginErrorAlert = UIAlertController(title: "Login error", message: "\(error?.localizedDescription) Please try again", preferredStyle: .alert)
+                let loginErrorAlert = UIAlertController(title: "Login error", message: "\(String(describing: error?.localizedDescription)) Please try again", preferredStyle: .alert)
                 loginErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(loginErrorAlert, animated: true, completion: nil)
                 return
@@ -71,7 +72,7 @@ class MWLoginController: UIViewController, UITextFieldDelegate {
             guard let resetEmail = forgotPasswordAlert.textFields?.first?.text else {return}
             Auth.auth().sendPasswordReset(withEmail: resetEmail, completion: { (error) in
                 if error != nil {
-                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(error?.localizedDescription)", preferredStyle: .alert)
+                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
                     resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(resetFailedAlert, animated: true, completion: nil)
                 } else {
@@ -119,6 +120,26 @@ class MWLoginController: UIViewController, UITextFieldDelegate {
             print("Logged in with Facebook")
         }
     }
+    
+    @IBAction func signInWithTwitter(_ sender: Any) {
+        Twitter.sharedInstance().logIn { (session, error) in
+            if error != nil {
+                print("Twitter login error: \(String(describing: error?.localizedDescription))")
+            } else {
+                guard let token = session?.authToken else {return}
+                guard let secret = session?.authTokenSecret else {return}
+                let credential = TwitterAuthProvider.credential(withToken: token, secret: secret)
+                Auth.auth().signIn(with: credential, completion: { (user, error) in
+                    if error != nil {
+                        print("Fsiled to login using Firebase: \(String(describing: error?.localizedDescription))")
+                        return
+                    }
+                    self.performSegue(withIdentifier: "OwnerProfile", sender: self)
+                })
+            }
+        }
+    }
+    
     
 }
     

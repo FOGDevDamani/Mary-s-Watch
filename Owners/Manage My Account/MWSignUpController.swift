@@ -30,7 +30,7 @@ class MWSignUpController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: email, password: password) {user, error in
         
                 if error != nil {
-                    let signupErrorAlert = UIAlertController(title: "Signup Error", message: "\(error?.localizedDescription)", preferredStyle: .alert)
+                    let signupErrorAlert = UIAlertController(title: "Signup Error", message: "\(String(describing: error?.localizedDescription))", preferredStyle: .alert)
                     signupErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(signupErrorAlert, animated: true, completion: nil)
                     return
@@ -58,7 +58,7 @@ class MWSignUpController: UIViewController, UITextFieldDelegate {
             }
             Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                 if error != nil {
-                    let emailNotSentAlert = UIAlertController(title: "Email Verification", message: "Verificationemail failed to send: \(error?.localizedDescription)", preferredStyle: .alert)
+                    let emailNotSentAlert = UIAlertController(title: "Email Verification", message: "Verificationemail failed to send: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
                     emailNotSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(emailNotSentAlert, animated: true, completion: nil)
                 } else {

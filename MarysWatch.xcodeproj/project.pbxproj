@@ -38,6 +38,7 @@
 		BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */; };
 		BF8E3F3E2113C47100B1F133 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */; };
 		BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */; };
+		BFAF4813216196D10000732F /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAF4812216196D10000732F /* SafariServices.framework */; };
 		BFE2F2B72138BD9600C946A1 /* MWLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */; };
 		BFE2F2BB2138C25000C946A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE2F2BA2138C25000C946A1 /* Main.storyboard */; };
 		BFE2F2BE2138C32C00C946A1 /* ChooseUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */; };
@@ -103,6 +104,7 @@
 		BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnersCustomerDisplayController.swift; sourceTree = "<group>"; };
 		BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
 		BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerAssetsDisplayController.swift; sourceTree = "<group>"; };
+		BFAF4812216196D10000732F /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		BFE2F2B62138BD9600C946A1 /* MWLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWLoginController.swift; sourceTree = "<group>"; };
 		BFE2F2BA2138C25000C946A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFAF4813216196D10000732F /* SafariServices.framework in Frameworks */,
 				7C74BB2272C8649BBFCFBA42 /* Pods_MarysWatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +160,7 @@
 		14B2BAE5361E7B89687C6952 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFAF4812216196D10000732F /* SafariServices.framework */,
 				8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */,
 				2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */,
 				1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */,
@@ -311,6 +315,7 @@
 				BF8275322113B78C0068CD56 /* Frameworks */,
 				BF8275332113B78C0068CD56 /* Resources */,
 				8197DE64615ED8D8256EB3DF /* [CP] Embed Pods Frameworks */,
+				81C2C442482167830DEBEBD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -497,6 +502,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81C2C442482167830DEBEBD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92DE85F2B7DAA6F48366A681 /* [CP] Check Pods Manifest.lock */ = {

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j5T-cV-D8s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j5T-cV-D8s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +29,7 @@
         <!--Owner Team Controller-->
         <scene sceneID="WVl-eo-AnZ">
             <objects>
-                <viewController id="7R3-cY-5QB" customClass="OwnerTeamController" customModule="maryswatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7R3-cY-5QB" customClass="OwnerTeamController" customModule="MarysWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KmG-BD-Ncw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,9 +134,12 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3q-fP-khb">
-                                        <rect key="frame" x="28" y="580" width="42" height="28"/>
+                                        <rect key="frame" x="28" y="580.5" width="42" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="dismissTeamController:" destination="7R3-cY-5QB" eventType="touchUpInside" id="yyK-QX-B9X"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6X-gh-mP8">
                                         <rect key="frame" x="124" y="72" width="100" height="40"/>
@@ -157,7 +159,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="addTeamMemberSettings:" destination="7R3-cY-5QB" eventType="touchUpInside" id="m2j-e6-10o"/>
+                                            <action selector="addOwnerTeamMember:" destination="7R3-cY-5QB" eventType="touchUpInside" id="sRB-6M-s5N"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x2k-DK-8yL" userLabel="Owner My Team Email Stack View">
@@ -291,12 +293,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKX-HY-f9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="131"/>
+            <point key="canvasLocation" x="1866" y="131"/>
         </scene>
         <!--Owner Team Display Controller-->
         <scene sceneID="VMY-xL-9cV">
             <objects>
-                <viewController id="wBJ-Ka-34Y" customClass="OwnerTeamDisplayController" customModule="maryswatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wBJ-Ka-34Y" customClass="OwnerTeamDisplayController" customModule="MarysWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vEG-Ew-ZPw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,7 +307,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUw-QD-2Zi">
-                                        <rect key="frame" x="37" y="99" width="70" height="24"/>
+                                        <rect key="frame" x="37" y="99" width="70" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -349,7 +351,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OwnerTeamCell" id="YkM-K9-VAq" customClass="OwnerTeamViewCell" customModule="maryswatch" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OwnerTeamCell" id="YkM-K9-VAq" customClass="OwnerTeamViewCell" customModule="MarysWatch" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="181"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -406,17 +408,133 @@
                                             <outlet property="delegate" destination="wBJ-Ka-34Y" id="dbS-E4-Srk"/>
                                         </connections>
                                     </collectionView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-NR-8Ah">
+                                        <rect key="frame" x="27.5" y="105" width="320" height="320"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Manage My Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cii-1w-uPL">
+                                                <rect key="frame" x="46.5" y="16" width="227.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is where you can manage the various details of your account. Please choose the part that needs attention." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVd-fP-ILm">
+                                                <rect key="frame" x="15.5" y="65" width="289" height="76"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="289" id="M8W-vH-sm3"/>
+                                                    <constraint firstAttribute="height" constant="76" id="TW5-bb-ipF"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="287" id="fUV-qM-0SY"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="67" id="s3A-hA-Lgm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="iJP-AC-xwu">
+                                                <rect key="frame" x="40" y="149" width="240" height="140"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zx-mp-acU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="28.5"/>
+                                                        <color key="backgroundColor" red="0.98001939059999998" green="0.45383828879999999" blue="0.075055129829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                        <state key="normal" title="My Profile">
+                                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="y6Y-cE-tg1" kind="show" id="r6e-tu-hkC"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjr-IY-Zta">
+                                                        <rect key="frame" x="0.0" y="37.5" width="240" height="28"/>
+                                                        <color key="backgroundColor" red="0.98001939059999998" green="0.45383828879999999" blue="0.075055129829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                        <state key="normal" title="My Team">
+                                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="closeManageMyAccount:" destination="wBJ-Ka-34Y" eventType="touchUpInside" id="2la-Qn-ahp"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4p-aR-N4E">
+                                                        <rect key="frame" x="0.0" y="74.5" width="240" height="28.5"/>
+                                                        <color key="backgroundColor" red="0.98001939059999998" green="0.45383828879999999" blue="0.075055129829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                        <state key="normal" title="My Customers">
+                                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="5cF-sT-Cqk" kind="show" id="RDc-5m-quS"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2z-12-EmN">
+                                                        <rect key="frame" x="0.0" y="112" width="240" height="28"/>
+                                                        <color key="backgroundColor" red="0.98001939059999998" green="0.45383828879999999" blue="0.075055129829999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                        <state key="normal" title="My Assets">
+                                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="dDB-8J-mbM" kind="show" id="TmK-sa-2Mr"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZe-a1-xTL">
+                                                <rect key="frame" x="282" y="8" width="30" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="KVf-yZ-4iD"/>
+                                                    <constraint firstAttribute="width" constant="30" id="UGg-D7-JtD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="x">
+                                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dismissManageMyAccount:" destination="wBJ-Ka-34Y" eventType="touchUpInside" id="pBk-Y7-DAi"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="VZe-a1-xTL" secondAttribute="trailing" constant="8" id="08t-M2-32W"/>
+                                            <constraint firstAttribute="trailing" secondItem="iJP-AC-xwu" secondAttribute="trailing" constant="40" id="0Yr-Xi-fsK"/>
+                                            <constraint firstItem="iJP-AC-xwu" firstAttribute="leading" secondItem="rLy-NR-8Ah" secondAttribute="leading" constant="40" id="50g-3T-Fn4"/>
+                                            <constraint firstItem="iJP-AC-xwu" firstAttribute="top" secondItem="KVd-fP-ILm" secondAttribute="bottom" constant="8" id="B5h-Nx-grO"/>
+                                            <constraint firstItem="KVd-fP-ILm" firstAttribute="centerX" secondItem="rLy-NR-8Ah" secondAttribute="centerX" id="Kb2-Rf-wDk"/>
+                                            <constraint firstItem="KVd-fP-ILm" firstAttribute="top" secondItem="Cii-1w-uPL" secondAttribute="bottom" constant="16" id="dAe-ia-P8c"/>
+                                            <constraint firstAttribute="bottom" secondItem="iJP-AC-xwu" secondAttribute="bottom" constant="64" id="mXF-JV-1rG"/>
+                                            <constraint firstItem="Cii-1w-uPL" firstAttribute="top" secondItem="rLy-NR-8Ah" secondAttribute="top" constant="16" id="moC-jo-hsn"/>
+                                            <constraint firstItem="Cii-1w-uPL" firstAttribute="centerX" secondItem="rLy-NR-8Ah" secondAttribute="centerX" id="rKB-2c-sq6"/>
+                                            <constraint firstItem="VZe-a1-xTL" firstAttribute="top" secondItem="rLy-NR-8Ah" secondAttribute="top" constant="8" id="wJL-B6-aNg"/>
+                                            <constraint firstAttribute="height" constant="320" id="xFJ-e7-ZqK"/>
+                                            <constraint firstAttribute="width" constant="320" id="yVu-cC-CER"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3t-4K-kVO">
+                                        <rect key="frame" x="8" y="32" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ADh-z0-48a"/>
+                                            <constraint firstAttribute="width" constant="50" id="Kvj-5w-SyM"/>
+                                        </constraints>
+                                        <state key="normal" title="]" image="menu icon"/>
+                                        <connections>
+                                            <action selector="showManageMyAccount:" destination="wBJ-Ka-34Y" eventType="touchUpInside" id="kqy-db-8cL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.79607843140000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="TeE-O3-waa" firstAttribute="centerX" secondItem="r7R-VF-ejj" secondAttribute="centerX" constant="0.5" id="1cm-bO-3vf"/>
                                     <constraint firstItem="YUw-QD-2Zi" firstAttribute="leading" secondItem="r7R-VF-ejj" secondAttribute="leading" constant="37" id="3vE-fJ-DiP"/>
                                     <constraint firstItem="TeE-O3-waa" firstAttribute="top" secondItem="r7R-VF-ejj" secondAttribute="topMargin" constant="-4" id="8CX-wt-OQC"/>
+                                    <constraint firstItem="rLy-NR-8Ah" firstAttribute="top" secondItem="r7R-VF-ejj" secondAttribute="top" constant="105" id="F2D-S5-Rw7"/>
                                     <constraint firstAttribute="trailing" secondItem="JBE-4C-95t" secondAttribute="trailing" constant="19" id="I8r-FB-qdQ"/>
                                     <constraint firstAttribute="trailing" secondItem="XRo-df-O40" secondAttribute="trailing" constant="13" id="OCf-yK-SEb"/>
                                     <constraint firstItem="YUw-QD-2Zi" firstAttribute="top" secondItem="r7R-VF-ejj" secondAttribute="topMargin" constant="71" id="Q4K-YS-8to"/>
                                     <constraint firstItem="XRo-df-O40" firstAttribute="bottom" secondItem="r7R-VF-ejj" secondAttribute="bottomMargin" id="REE-DB-X7Z"/>
+                                    <constraint firstItem="Z3t-4K-kVO" firstAttribute="leading" secondItem="r7R-VF-ejj" secondAttribute="leading" constant="8" id="TEa-cL-lAk"/>
                                     <constraint firstItem="JBE-4C-95t" firstAttribute="top" secondItem="r7R-VF-ejj" secondAttribute="topMargin" constant="65" id="W7k-4q-hVN"/>
+                                    <constraint firstItem="rLy-NR-8Ah" firstAttribute="centerX" secondItem="r7R-VF-ejj" secondAttribute="centerX" id="fgo-BV-Jr2"/>
+                                    <constraint firstItem="Z3t-4K-kVO" firstAttribute="top" secondItem="r7R-VF-ejj" secondAttribute="top" constant="32" id="gWI-39-u23"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -431,6 +549,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="glM-n0-fT8"/>
                     <connections>
+                        <outlet property="ownerManageMyAccount" destination="Z3t-4K-kVO" id="XA7-Am-88k"/>
+                        <outlet property="ownerManageMyAccountView" destination="rLy-NR-8Ah" id="8sD-Gu-55H"/>
                         <outlet property="ownerTeamVIew" destination="Voa-4C-GRt" id="abb-K8-vJT"/>
                     </connections>
                 </viewController>
@@ -438,12 +558,37 @@
             </objects>
             <point key="canvasLocation" x="754" y="131"/>
         </scene>
+        <!--OwnerProfile-->
+        <scene sceneID="S52-V8-fFi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OwnerProfile" id="y6Y-cE-tg1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiZ-nP-Uhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1273" y="-17"/>
+        </scene>
+        <!--OwnerCustomers-->
+        <scene sceneID="XQT-wM-E1d">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OwnerCustomers" id="5cF-sT-Cqk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxU-iZ-qJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1273" y="37"/>
+        </scene>
+        <!--OwnerAssets-->
+        <scene sceneID="8Hq-vS-r0M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OwnerAssets" id="dDB-8J-mbM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4aQ-tM-o6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="85"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="add plus" width="94" height="94"/>
-        <image name="add team member" width="265" height="99"/>
-        <image name="default_avatar_male" width="160" height="160"/>
-        <image name="email icon" width="210" height="74"/>
-        <image name="mw logo tm" width="248" height="102"/>
+        <image name="add plus" width="70.5" height="70.5"/>
+        <image name="add team member" width="198.75" height="74.25"/>
+        <image name="default_avatar_male" width="38.400001525878906" height="38.400001525878906"/>
+        <image name="email icon" width="157.5" height="55.5"/>
+        <image name="menu icon" width="69.75" height="69.75"/>
+        <image name="mw logo tm" width="186" height="76.5"/>
     </resources>
 </document>

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseFirestore
+import Firebase
 
 
 
@@ -25,37 +25,134 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var countyTF: UITextField!
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    
-    var reference: CollectionReference!
-
+  @IBOutlet weak var confirmPasswordTF: UITextField!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        reference = Firestore.firestore().collection("User")
+      configureTextFields()
+      configureTapGesture()
     }
-    
-    
+  
+  private func configureTapGesture() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OwnerEditProfileController.handleTap))
+    view.addGestureRecognizer(tapGesture)
+  }
+  
+  @objc func handleTap() {
+    view.endEditing(true)
+  }
+  
+  private func configureTextFields() {
+    typeOfOwnerTF.delegate = self
+    firstNameTF.delegate = self
+    lastNameTF.delegate = self
+    emailTF.delegate = self
+    cellPhoneTF.delegate = self
+    addressTF.delegate = self
+    stateTF.delegate = self
+    cityTF.delegate = self
+    zipCodeTF.delegate = self
+    countyTF.delegate = self
+    userNameTF.delegate = self
+    passwordTF.delegate = self
+    confirmPasswordTF.delegate = self
+  }
+  
     @IBAction func saveSettings(_ sender: Any) {
-        guard let firstName = firstNameTF.text, !firstName.isEmpty else {return}
-        guard let lastName = lastNameTF.text, !lastName.isEmpty else {return}
-        guard let email = emailTF.text, !email.isEmpty else {return}
-        guard let cellPhone = cellPhoneTF.text, !cellPhone.isEmpty else {return}
-        guard let address = addressTF.text, !address.isEmpty else {return}
-        guard let state = stateTF.text, !state.isEmpty else {return}
-        guard let city = cityTF.text, !city.isEmpty else {return}
-        guard let zipCode = zipCodeTF.text, !zipCode.isEmpty else {return}
-        guard let county = countyTF.text, !county.isEmpty else {return}
+      guard let email = emailTF.text, emailTF.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)
+        enterValidEmailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(enterValidEmailAlert, animated: true, completion: nil)
+        return}
+      
+      guard let password = passwordTF.text, passwordTF.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
+        enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(enterValidPasswordAlert, animated: true, completion: nil)
+        return}
+      
+      guard let username = userNameTF.text, userNameTF.text?.count != 0, isUsernameValid(username: username) != false  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+        enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(enterValidUsernameAlert, animated: true, completion: nil)
+        return }
+      
+      guard let typeOfOwner = typeOfOwnerTF.text, typeOfOwnerTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let firstName = firstNameTF.text, firstNameTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let lastName = lastNameTF.text, lastNameTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return  }
+      
+      guard let cellPhone = cellPhoneTF.text, cellPhoneTF.text?.count != 0, isPhoneNumberValid(cellPhone: cellPhone) else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Invalid Phone Number entered", message: "Phone format must follow: ***-***-****", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let address = addressTF.text, addressTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let state = stateTF.text, stateTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let city = cityTF.text, cityTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let zip = zipCodeTF.text, zipCodeTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      guard let county = countyTF.text, countyTF.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+        fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
+        return }
+      
+      let newEditOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, username: username, password: password)
+      
+      let newEditOwnerReference = Firestore.firestore().collection("User").document("Owner")
+      
+      
+      if confirmPasswordTF.text == passwordTF.text {
         
-        let newProfile = User(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, city: city, state: state, county: county)
+        newEditOwnerReference.setData(newEditOwner.dictionary) { (error) in
+          if let error = error {
+            print("Unable to create user: \(error.localizedDescription)")
+          } else {
+            print("User created")
+          }
+        }
         
-        reference.document("qYddEMg9j2PxaxKocb3D").setData(newProfile.dicitonary)
-        
-        dismissViewController()
-    }
+        let passwordsDontMatchAlert = UIAlertController(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", preferredStyle: .alert)
+        passwordsDontMatchAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+          self.passwordTF.text = ""
+          self.confirmPasswordTF.text = ""
+        }))
+        self.present(passwordsDontMatchAlert, animated: true, completion: nil)
+      }
+      
+      
+      
+      
+  }
+  
+      
+}
     
-    func dismissViewController() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+
+extension OwnerEditProfileController {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == firstNameTF {
             lastNameTF.becomeFirstResponder()
@@ -73,16 +170,48 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
             zipCodeTF.becomeFirstResponder()
         } else if textField == zipCodeTF {
             countyTF.becomeFirstResponder()
-        } else {
+        } else if textField == countyTF {
+            userNameTF.becomeFirstResponder()
+        } else if textField == userNameTF {
+            passwordTF.becomeFirstResponder()
+        } else if textField == passwordTF {
+            confirmPasswordTF.becomeFirstResponder()
+        } else  {
             textField.resignFirstResponder()
         }
         
         return true
     }
+  
+  func isValidEmail(emailID: String) -> Bool {
+    let emailRegEx = "[A-z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+    return emailTest.evaluate(with: emailID)
+  }
+  
+  func isPasswordValid(password: String) -> Bool {
+    let passwordRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
+    let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+    return passwordTest.evaluate(with: password)
+  }
+  
+  func isUsernameValid(username: String) -> Bool {
+    let usernameRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
+    let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegEx)
+    return usernameTest.evaluate(with: username)
+  }
+  
+  func isPhoneNumberValid(cellPhone: String) -> Bool {
+    let cellPhoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"
+    let cellPhoneTest = NSPredicate(format: "SELF MATCHES %@", cellPhoneRegEx)
+    return cellPhoneTest.evaluate(with:cellPhone)
+  }
+
+}
     
    
 
-}
+
 
 
 

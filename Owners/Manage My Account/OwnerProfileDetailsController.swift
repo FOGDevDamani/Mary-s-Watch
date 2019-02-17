@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import FirebaseFirestore
+import Firebase
 import FirebaseStorage
-import FirebaseAuth
 
 class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -17,35 +16,43 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var ownerDisplayPhoneField: UILabel!
     @IBOutlet weak var ownerDisplayEmailField: UILabel!
     @IBOutlet weak var ownerDisplayAddressField: UILabel!
+    @IBOutlet weak var ownerTypeOfUser: UILabel!
+    @IBOutlet weak var ownerManageMyAccountView: UIView!
+    @IBOutlet weak var showManageMyAccount: UIButton!
   
     @IBOutlet weak var profileImage: UIImageView!
-    var reference: DocumentReference!
+    var docReference: DocumentReference!
     var nameListener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reference = Firestore.firestore().document("User/qYddEMg9j2PxaxKocb3D")
+        docReference = Firestore.firestore().collection("User").document("Owner")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nameListener = reference.addSnapshotListener { (docSnapshot, error) in
+        nameListener = docReference.addSnapshotListener { (docSnapshot, error) in
             guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
-            let profileData = docSnapshot.data()
-            let firstName = profileData["firstName"] as? String ?? ""
-            let lastName = profileData["lastName"] as? String ?? ""
-            let currentName = "\(firstName) \(lastName)"
-            let currentAddress = profileData["address"] as? String ?? ""
-            let currentCity = profileData["city"] as? String ?? ""
-            let currentState = profileData["state"] as? String ?? ""
-            let currentZipcode = profileData["zipCode"] as? String ?? ""
+          guard let profileData = docSnapshot.data() else {
+            print("Owner data is empty")
+            return
+          }
+          guard let firstName = profileData["First Name"] as? String else {return}
+          guard let lastName = profileData["Last Name"] as? String else {return}
+            let ownerName = "\(firstName) \(lastName)"
+          guard let currentAddress = profileData["address"] as? String else {return}
+          guard let currentCity = profileData["City"] as? String else {return}
+          guard let currentState = profileData["State"] as? String else {return}
+          guard let currentZipcode = profileData["Zipcode"] as? String else {return}
             let fullAddress = "\(currentAddress) \(currentCity) \(currentState), \(currentZipcode)"
-            let email = profileData["email"] as? String ?? ""
-            let phoneNumber = profileData["cellPhone"] as? String ?? ""
-            self.ownerDisplayNameField.text = currentName
+          guard let email = profileData["Email"] as? String else {return}
+          guard let phoneNumber = profileData["Cell Phone"] as? String else {return}
+          
+            self.ownerDisplayNameField.text = ownerName
             self.ownerDisplayAddressField.text = fullAddress
             self.ownerDisplayEmailField.text = email
             self.ownerDisplayPhoneField.text = phoneNumber
+            self.ownerTypeOfUser.text = "Owner"
         }
     }
     
@@ -53,7 +60,19 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
         super.viewWillDisappear(animated)
         nameListener.remove()
     }
-    
+  
+  @IBAction func closeManageMyAccount(_ sender: Any) {
+    ownerManageMyAccountView.isHidden = true
+  }
+  
+  @IBAction func dismissManageMyAccount(_ sender: Any) {
+    ownerManageMyAccountView.isHidden = true
+  }
+  
+  @IBAction func showManageMyAccount(_ sender: Any) {
+    ownerManageMyAccountView.isHidden = true
+  }
+  
     @IBAction func changeProfileImage(_ sender: Any) {
         
         guard let image = profileImage.image else { return }
@@ -81,23 +100,15 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
-        
-        self.uploadProfileImage(image) {url in
-            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            changeRequest?.photoURL = url
-            
-            changeRequest?.commitChanges {error in
-                if error == nil {
-                    print("photo changed")
-                } else {
-                    print("Error: \(error!.localizedDescription)")
-                }
-            }
-        }
+      
+      
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
         profileImage.image = image
         
@@ -108,28 +119,12 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
-        
-        guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return }
-        
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        storageRef.putData(imageData, metadata: metaData) {metaData, error in
-            if error == nil,metaData == nil  {
-                if let url = metaData?.downloadURL() {
-                    completion(url)
-                } else {
-                    completion(nil)
-                }
-            } else {
-                completion(nil)
-            }
-        }
-    }
     
-    
+  var imageReference: StorageReference {
+    return Storage.storage().reference().child("images")
+  }
+  
+  
     
   
     
@@ -158,4 +153,14 @@ class OwnerProfileDetailsController: UIViewController, UIImagePickerControllerDe
     
     
   
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

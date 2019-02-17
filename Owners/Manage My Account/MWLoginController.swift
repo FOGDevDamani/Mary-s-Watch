@@ -8,30 +8,22 @@
 
 import UIKit
 import FirebaseAuth
-import FacebookCore
-import FacebookLogin
+import FBSDKCoreKit
+import FBSDKLoginKit
 import TwitterKit
 
-class MWLoginController: UIViewController, UITextFieldDelegate {
+class OwnerLoginController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
     
-    var userID = Auth.auth().currentUser?.uid
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        if let user = Auth.auth().currentUser {
-//            self.performSegue(withIdentifier: "OwnerProfile", sender: self)
-//        }
-//    }
+
 
     @IBAction func signIn(_ sender: Any) {
         guard let email = emailLogin.text else {return}
@@ -46,21 +38,8 @@ class MWLoginController: UIViewController, UITextFieldDelegate {
                 self.present(loginErrorAlert, animated: true, completion: nil)
                 return
             }
-            
-            if user!.isEmailVerified {
-                self.performSegue(withIdentifier: "OwnerProfile", sender: self)
-            } else {
-                let notVerifiedAlert = UIAlertController(title: "Not verified", message: "Your account is pending verification. Please check your email and verify your account", preferredStyle: .alert)
-                notVerifiedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(notVerifiedAlert, animated: true, completion: nil)
-                do {
-                    try Auth.auth().signOut()
-                } catch {
-                    
-                }
-            }
-        }
-    }
+          }
+      }
     
     @IBAction func forgotPassword(_ sender: Any) {
         let forgotPasswordAlert = UIAlertController(title: "Forgot Password?", message: "Please enter email to retrieve password", preferredStyle: .alert)
@@ -96,42 +75,24 @@ class MWLoginController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func signInWithFacebook(_ sender: Any) {
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { (result) in
-            switch result {
-            case .success(grantedPermissions: _, declinedPermissions: _, token: _):
-                self.signIntoFirebase()
-            case .failed(let err):
-                print(err)
-            case .cancelled:
-                print("cancelled")
-            }
-        }
+      
     }
     
     func signIntoFirebase() {
-        guard let authenticationTokenString = AccessToken.current?.authenticationToken else {return}
-        let credential = FacebookAuthProvider.credential(withAccessToken: authenticationTokenString)
-        Auth.auth().signIn(with: credential) { (user, err) in
-            if let err = err {
-                print(err)
-                return
-            }
-            print("Logged in with Facebook")
-        }
+      
     }
     
     @IBAction func signInWithTwitter(_ sender: Any) {
-        Twitter.sharedInstance().logIn { (session, error) in
+      TWTRTwitter.sharedInstance().logIn { (session, error) in
             if error != nil {
                 print("Twitter login error: \(String(describing: error?.localizedDescription))")
             } else {
                 guard let token = session?.authToken else {return}
                 guard let secret = session?.authTokenSecret else {return}
                 let credential = TwitterAuthProvider.credential(withToken: token, secret: secret)
-                Auth.auth().signIn(with: credential, completion: { (user, error) in
+                Auth.auth().signInAndRetrieveData(with: credential, completion: { (user, error) in
                     if error != nil {
-                        print("Fsiled to login using Firebase: \(String(describing: error?.localizedDescription))")
+                        print("Failed to login using Firebase: \(String(describing: error?.localizedDescription))")
                         return
                     }
                     self.performSegue(withIdentifier: "OwnerProfile", sender: self)

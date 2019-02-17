@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class LandingPageController: UIViewController {
-    
-    override func viewDidAppear(_ animated: Bool) {
-       
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if Auth.auth().currentUser?.uid == nil || Auth.auth().currentUser?.isEmailVerified == false {
+      let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+      let popUp = storyBoard.instantiateViewController(withIdentifier: "UserAlertController")
+      self.present(popUp, animated: true, completion: nil)
+    } else {
+      let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+      let showLogin = storyBoard.instantiateViewController(withIdentifier: "LoginController")
+      self.present(showLogin, animated: true, completion: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
+  }
+  
 }

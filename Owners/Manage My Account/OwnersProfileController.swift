@@ -7,72 +7,66 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import FirebaseAuth
+import Firebase
+
 
 class OwnersProfileController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var reference: Firestore!
-    var namesArray = [User]()
-   
-    
-       @IBOutlet weak var ownersProfile: UITableView!
+  
+  var ownerReference: DocumentReference!
+  var ownerNameArray = [Owner]()
+
+  @IBOutlet weak var ownersProfile: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        reference = Firestore.firestore()
-       
-
+        ownerReference = Firestore.firestore().collection("User").document("Owner")
+        loadData()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       watchForData()
-    }
-    
-    func watchForData() {
-        reference.collection("User").addSnapshotListener { (snapShot, error) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                guard let snapShot = snapShot else {return}
-                let models = snapShot.documents.compactMap({ User(dictionary: $0.data())})
-                self.namesArray = models
-                DispatchQueue.main.async {
-                    self.ownersProfile.reloadData()
-                }
-            }
+  
+  func loadData() {
+    ownerReference.getDocument { (document, error) in
+      if let sp = document.flatMap({ $0.data().flatMap({ (data) in
+        return Owner(dictionary: data)
+      })
+      }) {
+        self.ownerNameArray.append(sp)
+        DispatchQueue.main.async {
+          self.ownersProfile.reloadData()
         }
-        
+      } else {
+        print("error retrieving renter: \(String(describing: error?.localizedDescription))")
+      }
     }
-    
-    
+  }
+  
+  
+  
     @IBAction func signOutProfile(_ sender: Any) {
+      do {
         try! Auth.auth().signOut()
-        self.dismiss(animated: false, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let popUP = storyboard.instantiateViewController(withIdentifier: "OwnerLoginController")
+        self.present(popUP, animated: true, completion: nil)
+      } catch let error{
+        print("Failed to sign out with error \(error.localizedDescription)")
+      }
     }
-    
-
-    
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return namesArray.count
+        return ownerNameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "OwnersProfileCell"
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? OwnersProfileCell else {
             fatalError("not an instance of OwnersProfileCell")
         }
         
-        let name = namesArray[indexPath.row]
-        let fullName = "\(name.firstName) \(name.lastName)"
-
-        cell.ownersProfileLabel.text = fullName
+        let owner = ownerNameArray[indexPath.row]
+      
+        cell.ownersProfileLabel.text = "Welcome \(owner.firstName)"
         
         return cell
     }
 
-   
 }

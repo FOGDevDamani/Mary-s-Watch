@@ -12,7 +12,7 @@ import Firebase
 class LandingPageController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
-    if Auth.auth().currentUser?.uid == nil || Auth.auth().currentUser?.isEmailVerified == false {
+    if Auth.auth().currentUser?.uid == nil {
       let storyBoard = UIStoryboard(name: "Main", bundle: nil)
       let popUp = storyBoard.instantiateViewController(withIdentifier: "UserAlertController")
       self.present(popUp, animated: true, completion: nil)

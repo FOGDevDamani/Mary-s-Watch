@@ -9,14 +9,15 @@
 import UIKit
 import Firebase
 import TwitterKit
-import FacebookCore
-import FacebookLogin
+import FBSDKLoginKit
 
-class OwnerLoginController: UIViewController, UITextFieldDelegate {
+
+class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var emailLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
-    
+  
+  @IBOutlet weak var ownerFBLogin: FBSDKLoginButton!
   
     
     override func viewDidLoad() {
@@ -47,15 +48,10 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate {
           }
       }
     
-    @IBAction func forgotPassword(_ sender: Any) {
-        let forgotPasswordAlert = UIAlertController(title: "Forgot Password?", message: "Please enter email to retrieve password", preferredStyle: .alert)
-        forgotPasswordAlert.addTextField { (textField) in
-            textField.placeholder = "Enter your email address"
-        }
-        forgotPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        forgotPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (action) in
-            guard let resetEmail = forgotPasswordAlert.textFields?.first?.text else {return}
-            Auth.auth().sendPasswordReset(withEmail: resetEmail, completion: { (error) in
+    @IBAction func forgotOwnerPassword(_ sender: Any) {
+      guard let email = emailLogin.text else {return}
+      
+            Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
                 if error != nil {
                     let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
                     resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -66,8 +62,8 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate {
                     self.present(resetSentAlert, animated: true, completion: nil)
                 }
             })
-        }))
-    }
+        }
+  
   private func configureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OwnerLoginController.handleTap))
     view.addGestureRecognizer(tapGesture)
@@ -93,33 +89,28 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate {
     }    
     
     
-    @IBAction func signInWithFacebook(_ sender: Any) {
-      let loginManager = LoginManager()
-      loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { (result) in
-        switch result {
-        case .success(grantedPermissions: _, declinedPermissions: _, token: _):
-          print("logged into facebook")
-          self.signIntoFirebase()
-        case .failed(let err):
-          print(err)
-        case .cancelled:
-          print("cancelled")
-        }
-        
-      }
-    }
-    
-    func signIntoFirebase() {
-      guard let accessTokenString = AccessToken.current?.authenticationToken else { return }
-      let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
-      Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+  func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    if error == nil {
+      let credential = FacebookAuthProvider.credential(withAccessToken: (FBSDKAccessToken.current()?.tokenString)!)
+      Auth.auth().signInAndRetrieveData(with: credential) { (authResutlt, error) in
         if let error = error {
-          print(error)
+          print(error.localizedDescription)
           return
         }
-        print("logged into firebase")
+        print(authResutlt?.user.email as Any)
+        let storyboard = UIStoryboard(name: "OwnerProfile", bundle: nil)
+        let popUp = storyboard.instantiateViewController(withIdentifier: "OwnerProfileController")
+        self.present(popUp, animated: true, completion: nil)
       }
+      
+    } else {
+      print("\(error.localizedDescription)")
     }
+  }
+  
+  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    print("User logged out")
+  }
     
     @IBAction func signInWithTwitter(_ sender: Any) {
       TWTRTwitter.sharedInstance().logIn { (session, error) in
@@ -134,7 +125,9 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate {
                         print("Failed to login using Firebase: \(String(describing: error?.localizedDescription))")
                         return
                     }
-                    self.performSegue(withIdentifier: "OwnerProfile", sender: self)
+                  let storyboard = UIStoryboard(name: "OwnerProfile", bundle: nil)
+                  let popUp = storyboard.instantiateViewController(withIdentifier: "OwnerProfileController")
+                  self.present(popUp, animated: true, completion: nil)
                 })
             }
         }

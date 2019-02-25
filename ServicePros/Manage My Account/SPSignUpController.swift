@@ -159,6 +159,11 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     
   }
   
+  @IBAction func dismissSignupView(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
+  
+  
   func sendVerificationEmail() {
     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
       if error != nil {

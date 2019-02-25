@@ -8,14 +8,16 @@
 
 import UIKit
 import Firebase
-import FacebookLogin
-import FacebookCore
+import FBSDKLoginKit
 import TwitterKit
 
-class RenterLoginController: UIViewController, UITextFieldDelegate {
+class RenterLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
   @IBOutlet weak var renterEmailLogin: UITextField!
   @IBOutlet weak var renterPasswordLogin: UITextField!
+  
+  @IBOutlet weak var renterFBLogin: FBSDKLoginButton!
+  
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class RenterLoginController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     configureTextFields()
     configureTapGesture()
+    
+    renterFBLogin.readPermissions = ["email"]
     }
     
   @IBAction func signIn(_ sender: Any) {
@@ -45,8 +49,20 @@ class RenterLoginController: UIViewController, UITextFieldDelegate {
     }
   }
   
-  @IBAction func forgotPassword(_ sender: Any) {
+  @IBAction func forgotRenterPassword(_ sender: Any) {
+    guard let email = renterEmailLogin.text else {return}
     
+    Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
+      if error != nil {
+        let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
+        resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(resetFailedAlert, animated: true, completion: nil)
+      } else {
+        let resetSentAlert = UIAlertController(title: "Reset Email Sent", message: "A password reset email has been sent to your registered email. Please check your email for further instructions", preferredStyle: .alert)
+        resetSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(resetSentAlert, animated: true, completion: nil)
+      }
+    })
   }
   
   private func configureTapGesture() {
@@ -74,33 +90,28 @@ class RenterLoginController: UIViewController, UITextFieldDelegate {
   }
   
   
-  @IBAction func signInWithFacebook(_ sender: Any) {
-    let loginManager = LoginManager()
-    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { (result) in
-      switch result {
-      case .success(grantedPermissions: _, declinedPermissions: _, token: _):
-        print("logged into facebook")
-        self.signIntoFirebase()
-      case .failed(let err):
-        print(err)
-      case .cancelled:
-        print("cancelled")
+  func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    if error == nil {
+      let credential = FacebookAuthProvider.credential(withAccessToken: (FBSDKAccessToken.current()?.tokenString)!)
+      Auth.auth().signInAndRetrieveData(with: credential) { (authResutlt, error) in
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+        print(authResutlt?.user.email as Any)
       }
-      
+    } else {
+      print("\(error.localizedDescription)")
+      let storyboard = UIStoryboard(name: "RenterProfile", bundle: nil)
+      let popUp = storyboard.instantiateViewController(withIdentifier: "RenterProfileDetailsController")
+      self.present(popUp, animated: true, completion: nil)
     }
   }
   
-  func signIntoFirebase() {
-    guard let accessTokenString = AccessToken.current?.authenticationToken else { return }
-    let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
-    Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-      if let error = error {
-        print(error)
-        return
-      }
-      print("logged into firebase")
-    }
+  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    print("User logged out")
   }
+  
   
   @IBAction func signInWithTwitter(_ sender: Any) {
     TWTRTwitter.sharedInstance().logIn { (session, error) in
@@ -115,7 +126,9 @@ class RenterLoginController: UIViewController, UITextFieldDelegate {
             print("Failed to login using Firebase: \(String(describing: error?.localizedDescription))")
             return
           }
-          self.performSegue(withIdentifier: "OwnerProfile", sender: self)
+          let storyboard = UIStoryboard(name: "RenterProfile", bundle: nil)
+          let popUp = storyboard.instantiateViewController(withIdentifier: "RenterProfileController")
+          self.present(popUp, animated: true, completion: nil)
         })
       }
     }

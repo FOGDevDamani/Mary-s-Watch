@@ -8,14 +8,18 @@
 
 import UIKit
 import Firebase
-import FacebookLogin
-import FacebookCore
+import FBSDKLoginKit
 import TwitterKit
 
-class SPLoginController: UIViewController, UITextFieldDelegate {
+class SPLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
   @IBOutlet weak var spEmailLogin: UITextField!
   @IBOutlet weak var spPasswordLogin: UITextField!
+  
+  @IBOutlet weak var spFBLogin: FBSDKLoginButton!
+
+  
+  
   
   
   override func viewDidLoad() {
@@ -24,6 +28,8 @@ class SPLoginController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     configureTextFields()
     configureTapGesture()
+    
+    spFBLogin.readPermissions = ["email"]
     }
     
   @IBAction func signIn(_ sender: Any) {
@@ -46,15 +52,10 @@ class SPLoginController: UIViewController, UITextFieldDelegate {
     }
   }
   
-  @IBAction func forgotPassword(_ sender: Any) {
-    let forgotPasswordAlert = UIAlertController(title: "Forgot Password?", message: "Please enter email to retrieve password", preferredStyle: .alert)
-    forgotPasswordAlert.addTextField { (textField) in
-      textField.placeholder = "Enter your email address"
-    }
-    forgotPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    forgotPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (action) in
-      guard let resetEmail = forgotPasswordAlert.textFields?.first?.text else {return}
-      Auth.auth().sendPasswordReset(withEmail: resetEmail, completion: { (error) in
+  @IBAction func forgotSPPassword(_ sender: Any) {
+    guard let email = spEmailLogin.text else {return}
+    
+      Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
         if error != nil {
           let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
           resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -65,8 +66,7 @@ class SPLoginController: UIViewController, UITextFieldDelegate {
           self.present(resetSentAlert, animated: true, completion: nil)
         }
       })
-    }))
-  }
+    }
   
   private func configureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SPLoginController.handleTap))
@@ -93,33 +93,28 @@ class SPLoginController: UIViewController, UITextFieldDelegate {
   }
   
   
-  @IBAction func signInWithFacebook(_ sender: Any) {
-    let loginManager = LoginManager()
-    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { (result) in
-      switch result {
-      case .success(grantedPermissions: _, declinedPermissions: _, token: _):
-        print("logged into facebook")
-        self.signIntoFirebase()
-      case .failed(let err):
-        print(err)
-      case .cancelled:
-        print("cancelled")
+  func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    if error == nil {
+      let credential = FacebookAuthProvider.credential(withAccessToken: (FBSDKAccessToken.current()?.tokenString)!)
+      Auth.auth().signInAndRetrieveData(with: credential) { (authResutlt, error) in
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+        print(authResutlt?.user.email as Any)
+        let storyboard = UIStoryboard(name: "SPProfile", bundle: nil)
+        let popUp = storyboard.instantiateViewController(withIdentifier: "SPProfileController")
+        self.present(popUp, animated: true, completion: nil)
       }
-      
+    } else {
+      print("\(error.localizedDescription)")
     }
   }
   
-  func signIntoFirebase() {
-    guard let accessTokenString = AccessToken.current?.authenticationToken else { return }
-    let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
-    Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-      if let error = error {
-        print(error)
-        return
-      }
-      print("logged into firebase")
-    }
+  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    print("User logged out")
   }
+  
   
   @IBAction func signInWithTwitter(_ sender: Any) {
     TWTRTwitter.sharedInstance().logIn { (session, error) in
@@ -134,7 +129,9 @@ class SPLoginController: UIViewController, UITextFieldDelegate {
             print("Failed to login using Firebase: \(String(describing: error?.localizedDescription))")
             return
           }
-          self.performSegue(withIdentifier: "OwnerProfile", sender: self)
+          let storyboard = UIStoryboard(name: "SPProfile", bundle: nil)
+          let popUp = storyboard.instantiateViewController(withIdentifier: "SPProfileController")
+          self.present(popUp, animated: true, completion: nil)
         })
       }
     }

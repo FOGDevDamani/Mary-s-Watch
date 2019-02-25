@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class SpTeamDisplayController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
   var spTeamReference: CollectionReference!

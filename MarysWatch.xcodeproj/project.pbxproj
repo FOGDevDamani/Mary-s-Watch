@@ -71,6 +71,11 @@
 		CB3DB9AB22187B7E004A28FB /* SPW-9Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9AA22187B7E004A28FB /* SPW-9Controller.swift */; };
 		CB3DB9AD22187E8E004A28FB /* SPCompanyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9AC22187E8E004A28FB /* SPCompanyDetails.swift */; };
 		CB3DB9AF22189CC3004A28FB /* OwnerCompanyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */; };
+		CB59D105222993CE00C80548 /* SPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D104222993CE00C80548 /* SPController.swift */; };
+		CB59D1072229943900C80548 /* RenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1062229943900C80548 /* RenterController.swift */; };
+		CB59D1092229947300C80548 /* OwnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1082229947300C80548 /* OwnerController.swift */; };
+		CB59D10B222A367600C80548 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D10A222A367500C80548 /* AuthenticationManager.swift */; };
+		CB59D10D222A3B7400C80548 /* AuthErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */; };
 		CB7561ED22132BD000A30C37 /* Renter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561EC22132BD000A30C37 /* Renter.swift */; };
 		CB7561EF22134E1D00A30C37 /* SPCustomers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561EE22134E1D00A30C37 /* SPCustomers.swift */; };
 		CB7561F122135F6400A30C37 /* RenterTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561F022135F6300A30C37 /* RenterTeam.swift */; };
@@ -152,6 +157,7 @@
 		BFE2F2C62141E1F400C946A1 /* OwnerSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerSignUpController.swift; sourceTree = "<group>"; };
 		C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.release.xcconfig"; sourceTree = "<group>"; };
 		C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatch/Pods-MarysWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		CB0FABB02223FA8C00447C50 /* MarysWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarysWatch.entitlements; sourceTree = "<group>"; };
 		CB19D5B02211C2D800040989 /* SPTeam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SPTeam.storyboard; sourceTree = "<group>"; };
 		CB19D5B22211C49800040989 /* SPCustomers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SPCustomers.storyboard; sourceTree = "<group>"; };
 		CB19D5B42211C50000040989 /* SPProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SPProfile.storyboard; sourceTree = "<group>"; };
@@ -180,6 +186,11 @@
 		CB3DB9AA22187B7E004A28FB /* SPW-9Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPW-9Controller.swift"; sourceTree = "<group>"; };
 		CB3DB9AC22187E8E004A28FB /* SPCompanyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCompanyDetails.swift; sourceTree = "<group>"; };
 		CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCompanyDetails.swift; sourceTree = "<group>"; };
+		CB59D104222993CE00C80548 /* SPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPController.swift; sourceTree = "<group>"; };
+		CB59D1062229943900C80548 /* RenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterController.swift; sourceTree = "<group>"; };
+		CB59D1082229947300C80548 /* OwnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerController.swift; sourceTree = "<group>"; };
+		CB59D10A222A367500C80548 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorAlertController.swift; sourceTree = "<group>"; };
 		CB7561EC22132BD000A30C37 /* Renter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renter.swift; sourceTree = "<group>"; };
 		CB7561EE22134E1D00A30C37 /* SPCustomers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCustomers.swift; sourceTree = "<group>"; };
 		CB7561F022135F6300A30C37 /* RenterTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterTeam.swift; sourceTree = "<group>"; };
@@ -259,6 +270,7 @@
 				BF8E3F1C2113C2B300B1F133 /* ServicePros */,
 				CB26F71B2210AA7200DA2F68 /* Textfield checking */,
 				CB06196221FD658B000ACFBF /* MWErrors */,
+				CB0FABB12225DC7A00447C50 /* Model Controllers */,
 				BF8E3F402113C4DF00B1F133 /* Model */,
 				BF82754C2113B7CB0068CD56 /* MarysWatchTests */,
 				BF8275572113B7CB0068CD56 /* MarysWatchUITests */,
@@ -281,6 +293,7 @@
 		BF8275372113B78C0068CD56 /* MarysWatch */ = {
 			isa = PBXGroup;
 			children = (
+				CB0FABB02223FA8C00447C50 /* MarysWatch.entitlements */,
 				BF8275382113B78C0068CD56 /* AppDelegate.swift */,
 				BF82753A2113B78C0068CD56 /* ViewController.swift */,
 				BFE2F2BA2138C25000C946A1 /* Main.storyboard */,
@@ -379,8 +392,20 @@
 		CB06196221FD658B000ACFBF /* MWErrors */ = {
 			isa = PBXGroup;
 			children = (
+				CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */,
 			);
 			path = MWErrors;
+			sourceTree = "<group>";
+		};
+		CB0FABB12225DC7A00447C50 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB59D104222993CE00C80548 /* SPController.swift */,
+				CB59D1062229943900C80548 /* RenterController.swift */,
+				CB59D1082229947300C80548 /* OwnerController.swift */,
+				CB59D10A222A367500C80548 /* AuthenticationManager.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		CB26F71B2210AA7200DA2F68 /* Textfield checking */ = {
@@ -516,6 +541,11 @@
 					BF8275342113B78C0068CD56 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BF8275482113B7CB0068CD56 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -724,6 +754,7 @@
 				CB1DC00D2211CCEB00331EF8 /* SPProfileCell.swift in Sources */,
 				BFE2F2BE2138C32C00C946A1 /* ChooseUserController.swift in Sources */,
 				CB7561F92213709800A30C37 /* OwnerCustomers.swift in Sources */,
+				CB59D10D222A3B7400C80548 /* AuthErrorAlertController.swift in Sources */,
 				CB2BFE53220EAC2700B329C4 /* RenterLoginController.swift in Sources */,
 				BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */,
 				CB19D5B72211C57400040989 /* SPProfileController.swift in Sources */,
@@ -740,12 +771,16 @@
 				CB19D5BD2211C5DF00040989 /* SPTeamController.swift in Sources */,
 				CBF19CEB2218AD79001B1239 /* OwnerW-9Controller.swift in Sources */,
 				BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */,
+				CB59D105222993CE00C80548 /* SPController.swift in Sources */,
 				CB19D5B92211C5A600040989 /* SPEditProfileController.swift in Sources */,
+				CB59D10B222A367600C80548 /* AuthenticationManager.swift in Sources */,
 				CB38EF7B220EDAF200FE3936 /* RenterEditProfileController.swift in Sources */,
+				CB59D1092229947300C80548 /* OwnerController.swift in Sources */,
 				BF8E3F332113C47100B1F133 /* OwnerAssetsViewCell.swift in Sources */,
 				CB19D5BF2211C60600040989 /* SpTeamDisplayController.swift in Sources */,
 				BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */,
 				BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */,
+				CB59D1072229943900C80548 /* RenterController.swift in Sources */,
 				CBB2A1CD220F52E100480015 /* RenterTeamController.swift in Sources */,
 				BF62C98A2117801D00952242 /* UserDataController.swift in Sources */,
 				BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */,
@@ -936,6 +971,7 @@
 			baseConfigurationReference = C875B6ECE8A77DC3F46EF1B6 /* Pods-MarysWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarysWatch/MarysWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8HWGTPK72S;
 				INFOPLIST_FILE = MarysWatch/Info.plist;
@@ -955,6 +991,7 @@
 			baseConfigurationReference = C27F2089E93F5194FFD1EBB5 /* Pods-MarysWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarysWatch/MarysWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8HWGTPK72S;
 				INFOPLIST_FILE = MarysWatch/Info.plist;

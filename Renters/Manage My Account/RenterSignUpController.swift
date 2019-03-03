@@ -25,6 +25,9 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var renterCreateAccountPassword: UITextField!
   @IBOutlet weak var renterCreateAccountConfirmPassword: UITextField!
   
+  @IBOutlet weak var renterScrollView: UIScrollView!
+  
+  
   
   var ref: DocumentReference!
   
@@ -34,7 +37,17 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         confirgureTapGesture()
         configureTextFields()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
   
   private func confirgureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RenterSignUpController.handleTap))
@@ -43,6 +56,21 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      renterScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      renterScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   private func configureTextFields() {
@@ -70,7 +98,7 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
       enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidPasswordAlert, animated: true, completion: nil)
       return}
-    guard let username = renterCreateAccountUsername.text, renterCreateAccountUsername.text?.count != 0, isUsernameValid(username: username) != false  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+    guard let username = renterCreateAccountUsername.text, renterCreateAccountUsername.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
       enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidUsernameAlert, animated: true, completion: nil)
       return }
@@ -107,24 +135,15 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    let newRenter = Renter(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
-    
     
     if renterCreateAccountConfirmPassword.text == renterCreateAccountPassword.text {
       
-      Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-        
-        Firestore.firestore().collection("User").document("Renter").setData(newRenter.dictionary, completion: { (error) in
-          if let error = error {
-            print("Unable to create user: \(error.localizedDescription)")
-          } else {
-            print("User created")
-          }
-        })
-        
-      }
+      let renterController = RenterController()
       
-      self.sendVerificationEmail()
+      renterController.createNewRenter(email: email, password: password)
+      
+      renterController.createRenterData(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
+      
       
       let creationSuccessAlert = UIAlertController(title: "Congratulations! Your account has been setup.", message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", preferredStyle: .alert )
       creationSuccessAlert.addAction(UIAlertAction(title: "Login", style: .default, handler: { (action) in
@@ -206,11 +225,6 @@ extension RenterSignUpController {
     return passwordTest.evaluate(with: password)
   }
   
-  func isUsernameValid(username: String) -> Bool {
-    let usernameRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
-    let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegEx)
-    return usernameTest.evaluate(with: username)
-  }
   
   func isPhoneNumberValid(cellPhone: String) -> Bool {
     let cellPhoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"

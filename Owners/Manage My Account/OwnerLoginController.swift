@@ -19,11 +19,15 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
   
   @IBOutlet weak var ownerFBLogin: FBSDKLoginButton!
   
+  let ownerController = OwnerController()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
       configureTapGesture()
       configureTextFields()
+      
+      ownerFBLogin.readPermissions = ["email"]
     
     }
 
@@ -32,36 +36,18 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
         guard let email = emailLogin.text else {return}
         guard let password = passwordLogin.text else {return}
         
-        
-        Auth.auth().signIn(withEmail: email, password: password) {user, error in
-        
-            if error != nil {
-                let loginErrorAlert = UIAlertController(title: "Login error", message: "\(String(describing: error?.localizedDescription)) Please try again", preferredStyle: .alert)
-                loginErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(loginErrorAlert, animated: true, completion: nil)
-                return
-            } else {
-              let storyboard = UIStoryboard(name: "OwnerProfile", bundle: nil)
-              let popUp = storyboard.instantiateViewController(withIdentifier: "OwnerProfileController")
-              self.present(popUp, animated: true, completion: nil)
-          }
-          }
+      ownerController.loginOwner(email: email, password: password)
+      
+      if Auth.auth().currentUser?.isEmailVerified == false {
+        ownerController.sendVerificationEmail()
+      }
       }
     
     @IBAction func forgotOwnerPassword(_ sender: Any) {
       guard let email = emailLogin.text else {return}
       
-            Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
-                if error != nil {
-                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
-                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(resetFailedAlert, animated: true, completion: nil)
-                } else {
-                    let resetSentAlert = UIAlertController(title: "Reset Email Sent", message: "A password reset email has been sent to your registered email. Please check your email for further instructions", preferredStyle: .alert)
-                    resetSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(resetSentAlert, animated: true, completion: nil)
-                }
-            })
+      ownerController.ownerForgotPassword(withEmail: email)
+      
         }
   
   private func configureTapGesture() {

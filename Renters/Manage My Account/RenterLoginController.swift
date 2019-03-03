@@ -18,6 +18,8 @@ class RenterLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBu
   
   @IBOutlet weak var renterFBLogin: FBSDKLoginButton!
   
+  let renterController = RenterController()
+  
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,36 +35,17 @@ class RenterLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBu
     guard let email = renterEmailLogin.text else {return}
     guard let password = renterPasswordLogin.text else {return}
     
+   renterController.loginRenter(withEmail: email, password: password)
     
-    Auth.auth().signIn(withEmail: email, password: password) {user, error in
-      
-      if error != nil {
-        let loginErrorAlert = UIAlertController(title: "Login error", message: "\(String(describing: error?.localizedDescription)) Please try again", preferredStyle: .alert)
-        loginErrorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(loginErrorAlert, animated: true, completion: nil)
-        return
-      } else {
-        let storyboard = UIStoryboard(name: "RenterProfile", bundle: nil)
-        let popUp = storyboard.instantiateViewController(withIdentifier: "RenterProfileDetailsController")
-        self.present(popUp, animated: true, completion: nil)
-      }
+    if Auth.auth().currentUser?.isEmailVerified == false {
+      renterController.resendEmailVerification()
     }
   }
   
   @IBAction func forgotRenterPassword(_ sender: Any) {
     guard let email = renterEmailLogin.text else {return}
     
-    Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
-      if error != nil {
-        let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
-        resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(resetFailedAlert, animated: true, completion: nil)
-      } else {
-        let resetSentAlert = UIAlertController(title: "Reset Email Sent", message: "A password reset email has been sent to your registered email. Please check your email for further instructions", preferredStyle: .alert)
-        resetSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(resetSentAlert, animated: true, completion: nil)
-      }
-    })
+  renterController.renterForgotPassword(withEmail: email)
   }
   
   private func configureTapGesture() {
@@ -103,7 +86,7 @@ class RenterLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBu
     } else {
       print("\(error.localizedDescription)")
       let storyboard = UIStoryboard(name: "RenterProfile", bundle: nil)
-      let popUp = storyboard.instantiateViewController(withIdentifier: "RenterProfileDetailsController")
+      let popUp = storyboard.instantiateViewController(withIdentifier: "RenterProfileController")
       self.present(popUp, animated: true, completion: nil)
     }
   }

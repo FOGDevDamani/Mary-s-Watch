@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
+
 
 class SPSignUpController: UIViewController, UITextFieldDelegate {
 
@@ -26,6 +26,7 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var spCreateAccountPassword: UITextField!
   @IBOutlet weak var spCreateAccountConfirmPassword: UITextField!
   
+  @IBOutlet weak var spSignUpScrollView: UIScrollView!
   
 
   override func viewDidLoad() {
@@ -33,7 +34,16 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     
         configureTextFields()
         confirgureTapGesture()
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
   
   private func confirgureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SPSignUpController.handleTap))
@@ -42,6 +52,21 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      spSignUpScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      spSignUpScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   private func configureTextFields() {
@@ -77,7 +102,7 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
       self.present(enterValidPasswordAlert, animated: true, completion: nil)
       return}
     
-    guard let username = spCreateAccountUsername.text, spCreateAccountUsername.text?.count != 0, isUsernameValid(username: username) != false  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+    guard let username = spCreateAccountUsername.text, spCreateAccountUsername.text?.count != 0 else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
       enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidUsernameAlert, animated: true, completion: nil)
       return }
@@ -122,23 +147,14 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
         return }
     
-    let newSP = ServiceProvider(typeOfCompany: typeOfCompany, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
     
     if spCreateAccountConfirmPassword.text == spCreateAccountPassword.text {
       
-      Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-        
-        Firestore.firestore().collection("User").document("Service Provider").setData(newSP.dictionary, completion: { (error) in
-          if let error = error {
-            print("Unable to create user: \(error.localizedDescription)")
-          } else {
-            print("User created")
-          }
-        })
-        
-      }
+      let spController = SPController()
       
-      self.sendVerificationEmail()
+      spController.createNewSP(withEmail: email , password: password)
+      
+      spController.createSPData(typeOfCompany: typeOfCompany, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
       
       
       let creationSuccessAlert = UIAlertController(title: "Congratulations! Your account has been setup.", message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", preferredStyle: .alert )
@@ -163,16 +179,6 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     self.dismiss(animated: true, completion: nil)
   }
   
-  
-  func sendVerificationEmail() {
-    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-      if error != nil {
-        print("error sending email: \(String(describing: error?.localizedDescription))")
-      } else {
-        print("email verification sent")
-      }
-    })
-  }
   
 }
 
@@ -221,11 +227,6 @@ extension SPSignUpController {
   return passwordTest.evaluate(with: password)
   }
   
-  func isUsernameValid(username: String) -> Bool {
-  let usernameRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
-  let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegEx)
-  return usernameTest.evaluate(with: username)
-  }
   
   func isPhoneNumberValid(cellPhone: String) -> Bool {
   let cellPhoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"

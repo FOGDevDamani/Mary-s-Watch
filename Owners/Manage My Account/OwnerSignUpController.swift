@@ -26,7 +26,8 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var ownerCreateAccountPassword: UITextField!
   @IBOutlet weak var ownerCreateAccountConfirmPassword: UITextField!
   
-    
+  @IBOutlet weak var ownerScrollView: UIScrollView!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,18 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         configureTextFields()
         configureTapGesture()
+      
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+  
   private func configureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OwnerSignUpController.handleTap))
     view.addGestureRecognizer(tapGesture)
@@ -42,6 +54,21 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      ownerScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      ownerScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   private func configureTextFields() {
@@ -70,7 +97,7 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
           enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           self.present(enterValidPasswordAlert, animated: true, completion: nil)
           return}
-        guard let username = ownerCreateAccountUsername.text, ownerCreateAccountUsername.text?.count != 0, isUsernameValid(username: username) != false  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+        guard let username = ownerCreateAccountUsername.text, ownerCreateAccountUsername.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
           enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           self.present(enterValidUsernameAlert, animated: true, completion: nil)
           return }
@@ -111,22 +138,16 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
         self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
           return }
       
-      let newOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, username: username, password: password)
-      
-      let newOwnerReference = Firestore.firestore().collection("User").document("Owner")
-      
       
         if ownerCreateAccountConfirmPassword.text == ownerCreateAccountPassword.text {
+          let ownerController = OwnerController()
           
-          newOwnerReference.setData(newOwner.dictionary) { (error) in
-            if let error = error {
-              print("Unable to create user: \(error.localizedDescription)")
-            } else {
-              print("User created")
-            }
-          }
+          ownerController.createNewOwner(email: email, password: password)
           
-          self.sendVerificationEmail()
+          ownerController.createOwnerData(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
+          
+          
+          
           
           let creationSuccessAlert = UIAlertController(title: "Congratulations! Your account has been setup.", message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", preferredStyle: .alert )
           creationSuccessAlert.addAction(UIAlertAction(title: "Login", style: .default, handler: { (action) in
@@ -135,6 +156,8 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
             self.present(popUp, animated: true, completion: nil)
           }))
           self.present(creationSuccessAlert, animated: true, completion: nil)
+          
+        } else {
             let passwordsDontMatchAlert = UIAlertController(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", preferredStyle: .alert)
             passwordsDontMatchAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.ownerCreateAccountPassword.text = ""
@@ -206,12 +229,6 @@ extension OwnerSignUpController {
     let passwordRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
     let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
     return passwordTest.evaluate(with: password)
-  }
-  
-  func isUsernameValid(username: String) -> Bool {
-    let usernameRegEx = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])[a-zA-z0-9]{8,}"
-    let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegEx)
-    return usernameTest.evaluate(with: username)
   }
   
   func isPhoneNumberValid(cellPhone: String) -> Bool {

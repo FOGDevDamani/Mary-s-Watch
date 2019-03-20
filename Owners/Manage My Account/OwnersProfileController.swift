@@ -16,12 +16,30 @@ class OwnersProfileController: UIViewController, UITableViewDelegate, UITableVie
   var ownerNameArray = [Owner]()
 
   @IBOutlet weak var ownersProfile: UITableView!
-    
-    override func viewDidLoad() {
+  @IBOutlet weak var ownerProfileImage: UIImageView!
+  @IBOutlet weak var changeOwnerProfileImage: UIButton!
+  
+  var imagePicker: UIImagePickerController!
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
         ownerReference = Firestore.firestore().collection("User").document("Owner")
         loadData()
+    
+    let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+    ownerProfileImage.isUserInteractionEnabled = true
+    ownerProfileImage.addGestureRecognizer(imageTap)
+    changeOwnerProfileImage.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
+    
+    imagePicker = UIImagePickerController()
+    imagePicker.allowsEditing = true
+    imagePicker.sourceType = .photoLibrary
+    imagePicker.delegate = self
     }
+  
+  @objc func openImagePicker(sender: Any) {
+    self.present(imagePicker, animated: true, completion: nil)
+  }
   
   func loadData() {
     ownerReference.getDocument { (document, error) in
@@ -64,9 +82,28 @@ class OwnersProfileController: UIViewController, UITableViewDelegate, UITableVie
         
         let owner = ownerNameArray[indexPath.row]
       
-        cell.ownersProfileLabel.text = "Welcome \(owner.firstName)"
+      cell.ownersProfileLabel.text = "Welcome \(owner.username)"
         
         return cell
     }
 
+}
+
+extension OwnersProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+      self.ownerProfileImage.image = pickedImage
+    }
+    
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  
+  
 }

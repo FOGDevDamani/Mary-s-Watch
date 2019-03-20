@@ -24,6 +24,7 @@ class RenterEditProfileController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var editRenterPassword: UITextField!
   @IBOutlet weak var editRenterConfirmPassword: UITextField!
   
+  @IBOutlet weak var renterScrollView: UIScrollView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,6 +41,21 @@ class RenterEditProfileController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      renterScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      renterScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   func configureTextFields() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDQ-6n-b88">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1jA-qp-ihE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -378,12 +378,18 @@
                                                             <state key="normal" title="Owner">
                                                                 <color key="titleColor" red="0.074509803920000006" green="0.058823529409999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <segue destination="qrX-nn-LEt" kind="presentation" id="QLk-XQ-qPm"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJF-of-PfC">
                                                             <rect key="frame" x="33.333333333333343" y="50" width="46" height="30"/>
                                                             <state key="normal" title="Renter">
                                                                 <color key="titleColor" red="0.074509803920000006" green="0.058823529409999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <segue destination="hLr-R1-nal" kind="presentation" id="zgp-Ig-XSb"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYG-rg-jsP">
                                                             <rect key="frame" x="0.0" y="100" width="113" height="30"/>
@@ -404,8 +410,8 @@
                                                     </constraints>
                                                     <state key="normal" image="marys-watch-horizontal-high-rez"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which User are You?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN8-g7-gbT">
-                                                    <rect key="frame" x="70.666666666666686" y="72" width="159" height="20.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Housing Perspective Are You?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN8-g7-gbT">
+                                                    <rect key="frame" x="9" y="72" width="282.33333333333331" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.074509803920000006" green="0.058823529409999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1548,6 +1554,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="signUp:" destination="qrX-nn-LEt" eventType="touchUpInside" id="Ku2-2h-Abj"/>
                                                     <action selector="signUpSP:" destination="dLN-7I-MIG" eventType="touchUpInside" id="5jl-oH-cVr"/>
                                                 </connections>
                                             </button>
@@ -1559,6 +1566,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
+                                                    <action selector="dismissSignupVIew:" destination="qrX-nn-LEt" eventType="touchUpInside" id="a4N-gC-HE2"/>
                                                     <action selector="dismissSignupView:" destination="dLN-7I-MIG" eventType="touchUpInside" id="cat-tt-YBQ"/>
                                                 </connections>
                                             </button>
@@ -1695,6 +1703,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="signUpRenter:" destination="hLr-R1-nal" eventType="touchUpInside" id="Joj-uI-Bk2"/>
                                                     <action selector="signUpSP:" destination="dLN-7I-MIG" eventType="touchUpInside" id="jcK-8J-NkX"/>
                                                 </connections>
                                             </button>
@@ -2020,8 +2029,8 @@
         <image name="submit" width="178.5" height="57"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qKK-gV-xnw"/>
-        <segue reference="fhs-6u-PCi"/>
-        <segue reference="DZq-PH-j3C"/>
+        <segue reference="zgp-Ig-XSb"/>
+        <segue reference="QLk-XQ-qPm"/>
+        <segue reference="VQC-Wx-3aP"/>
     </inferredMetricsTieBreakers>
 </document>

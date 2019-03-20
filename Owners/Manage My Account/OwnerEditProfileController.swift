@@ -27,7 +27,9 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTF: UITextField!
   @IBOutlet weak var confirmPasswordTF: UITextField!
   
-    override func viewDidLoad() {
+  @IBOutlet weak var ownerScrollView: UIScrollView!
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
       configureTextFields()
       configureTapGesture()
@@ -40,6 +42,21 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      ownerScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      ownerScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   private func configureTextFields() {
@@ -57,6 +74,11 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
     passwordTF.delegate = self
     confirmPasswordTF.delegate = self
   }
+  
+  @IBAction func dismissOwnerEditController(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
+  
   
     @IBAction func saveSettings(_ sender: Any) {
       guard let email = emailTF.text, emailTF.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)

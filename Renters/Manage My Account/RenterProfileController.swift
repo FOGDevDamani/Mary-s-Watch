@@ -15,11 +15,28 @@ class RenterProfileController: UIViewController, UITableViewDelegate, UITableVie
   var namesArray = [Renter]()
   
   @IBOutlet weak var renterProfileView: UITableView!
+  @IBOutlet weak var renterProfileImage: UIImageView!
+  @IBOutlet weak var changeRenterProfileImage: UIButton!
+  
+  var imagePicker: UIImagePickerController!
   
   override func viewDidLoad() {
         super.viewDidLoad()
         renterReference = Firestore.firestore().collection("User").document("Renter")
         loadData()
+    let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+    renterProfileImage.isUserInteractionEnabled = true
+    renterProfileImage.addGestureRecognizer(imageTap)
+    changeRenterProfileImage.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
+    
+    imagePicker = UIImagePickerController()
+    imagePicker.allowsEditing = true
+    imagePicker.sourceType = .photoLibrary
+    imagePicker.delegate = self
+  }
+  
+  @objc func openImagePicker(sender: Any) {
+    self.present(imagePicker, animated: true, completion: nil)
   }
   
   func loadData() {
@@ -42,7 +59,7 @@ class RenterProfileController: UIViewController, UITableViewDelegate, UITableVie
     do{
       try Auth.auth().signOut()
       let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-      let goToLogin = storyBoard.instantiateViewController(withIdentifier: "LoginController")
+      let goToLogin = storyBoard.instantiateViewController(withIdentifier: "RenterLoginController")
       self.present(goToLogin, animated: true, completion: nil)
     } catch {
       print("Error signing out: \(error.localizedDescription)")
@@ -61,14 +78,31 @@ class RenterProfileController: UIViewController, UITableViewDelegate, UITableVie
     
     let renter = namesArray[indexPath.row]
     
-    cell.renterProfileLabel.text = "Welcome \(renter.firstName)"
+    cell.renterProfileLabel.text = "Welcome \(renter.userName)"
     
     return cell
   }
   
 }
 
-
+extension RenterProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+      self.renterProfileImage.image = pickedImage
+    }
+    
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  
+  
+}
 
 
 

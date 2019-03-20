@@ -1,5 +1,5 @@
 //
-//  SPCompanyDetailsController.swift
+//  SPCompanyDetails.swift
 //  MarysWatch
 //
 //  Created by Damani Turner on 2/16/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SPCompanyDetailsController: UIViewController, UITextFieldDelegate {
+class SPCompanyDetails: UIViewController, UITextFieldDelegate {
   
   
   @IBOutlet weak var spTypeOfCompany: UITextField!
@@ -32,7 +32,7 @@ class SPCompanyDetailsController: UIViewController, UITextFieldDelegate {
     }
   
   func configureTapGesture() {
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SPCompanyDetailsController.handleTap))
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SPCompanyDetails.handleTap))
     view.addGestureRecognizer(tapGesture)
   }
   
@@ -135,7 +135,7 @@ class SPCompanyDetailsController: UIViewController, UITextFieldDelegate {
   
 }
 
-extension SPCompanyDetailsController {
+extension SPCompanyDetails {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == spTypeOfCompany {
       spCompanyName.becomeFirstResponder()

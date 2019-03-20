@@ -25,6 +25,9 @@ class SPEditProfileController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var spEditPassword: UITextField!
   @IBOutlet weak var spEditConfirmPassword: UITextField!
   
+  @IBOutlet weak var spScrollView: UIScrollView!
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +42,21 @@ class SPEditProfileController: UIViewController, UITextFieldDelegate {
   
   @objc func handleTap() {
     view.endEditing(true)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+      return
+    }
+    
+    let keyboardViewEndFrame = view.convert(keyboardRect, to: view.window)
+    
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
+      .keyboardWillChangeFrameNotification {
+      spScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    } else {
+      spScrollView.contentInset = UIEdgeInsets.zero
+    }
   }
   
   func configureTextFields() {

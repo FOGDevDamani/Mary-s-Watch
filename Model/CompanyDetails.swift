@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct CompanyDetails {
+struct SPCompanyDetails {
   var typeOfCompany: String
   var companyName: String
   var companyAddress: String
@@ -38,7 +38,7 @@ struct CompanyDetails {
   }
 }
 
-extension CompanyDetails: DocumentSerializable {
+extension SPCompanyDetails: DocumentSerializable {
   init?(dictionary: [String : Any]) {
     guard let typeOfCompany = dictionary["Type of Company"] as? String,
     let companyName = dictionary["Company Name"] as? String,

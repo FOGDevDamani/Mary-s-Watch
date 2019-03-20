@@ -19,7 +19,7 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
   
   @IBOutlet weak var ownerFBLogin: FBSDKLoginButton!
   
-  let ownerController = OwnerController()
+  let ownerController = MWOwnerController()
   
     
     override func viewDidLoad() {
@@ -37,16 +37,12 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
         guard let password = passwordLogin.text else {return}
         
       ownerController.loginOwner(email: email, password: password)
-      
-      if Auth.auth().currentUser?.isEmailVerified == false {
-        ownerController.sendVerificationEmail()
-      }
+      showAlert(title: "Login Successful", message: "Successfully logged in", style: .alert, handler: proceedToOwnerProfile)
+    
       }
     
     @IBAction func forgotOwnerPassword(_ sender: Any) {
-      guard let email = emailLogin.text else {return}
-      
-      ownerController.ownerForgotPassword(withEmail: email)
+     showForgotPasswordAlert(title: "Forgot Password", message: "Please enter an email for the reset instructions to be sent to", style: .alert, handler: nil)
       
         }
   
@@ -122,7 +118,49 @@ class OwnerLoginController: UIViewController, UITextFieldDelegate, FBSDKLoginBut
     
 }
     
+
+extension OwnerLoginController {
+  func showForgotPasswordAlert(title: String, message: String, style: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Enter email address here"
+    }
     
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alertController.addAction(cancelAction
+    )
+    let resetAction = UIAlertAction(title: "Reset Password", style: .default) { (action) in
+      guard let resetEmail = alertController.textFields?.first?.text else {return}
+      Auth.auth().sendPasswordReset(withEmail: resetEmail, completion: { (error) in
+        if error != nil {
+          self.showForgotPasswordAlert(title: "Error", message: "\(String(describing: error?.localizedDescription))", style: .alert, handler: nil)
+        } else {
+          self.showForgotPasswordAlert(title: "Reset Email Sent", message: "Please check your email for further instructions", style: .alert, handler: nil)
+        }
+      })
+    }
+    alertController.addAction(resetAction)
+    
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func showAlert(title: String, message: String, style: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: handler)
+    alertController.addAction(okAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func proceedToOwnerProfile(sender: UIAlertAction) -> Void {
+    let storyboard = UIStoryboard(name: "OwnerProfile", bundle: nil)
+    let popUp = storyboard.instantiateViewController(withIdentifier: "OwnerProfileController")
+    self.present(popUp, animated: true, completion: nil)
+  }
+  
+  
+}
     
     
     

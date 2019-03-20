@@ -28,12 +28,31 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var spSignUpScrollView: UIScrollView!
   
+  var currentTextField = UITextField()
+  var pickerView = UIPickerView()
+  
+ let states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+  
+  let typeOfCompany = ["Partnership", "Limited Liability Partnership", "Limited Liability Corporation", "C-Corporation", "S-Corporation", "Not-For-Profit"]
+  
+  var selectedState: String?
+  var selectedTypeOfCompany: String?
+  let spController = MWSPController()
+  
 
   override func viewDidLoad() {
         super.viewDidLoad()
     
+    pickerView.delegate = self
+    pickerView.dataSource = self
+    
+    spCreateAccountState.inputView = pickerView
+    spCreateAccountTypeOfCompany.inputView = pickerView
+    
+    
         configureTextFields()
         confirgureTapGesture()
+        createToolBar()
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -84,6 +103,22 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     spCreateAccountPassword.delegate = self
     spCreateAccountConfirmPassword.delegate = self
   }
+  
+  
+  func createToolBar() {
+    let toolBar = UIToolbar()
+    toolBar.sizeToFit()
+    
+    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SPSignUpController.handleTap))
+    
+    toolBar.setItems([doneButton], animated: false)
+    toolBar.isUserInteractionEnabled = true
+    
+    spCreateAccountState.inputAccessoryView = toolBar
+    spCreateAccountTypeOfCompany.inputAccessoryView = toolBar
+  }
+  
+  
   
   
   @IBAction func signUpSP(_ sender: Any) {
@@ -150,27 +185,13 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     
     if spCreateAccountConfirmPassword.text == spCreateAccountPassword.text {
       
-      let spController = SPController()
-      
       spController.createNewSP(withEmail: email , password: password)
       
       spController.createSPData(typeOfCompany: typeOfCompany, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
       
-      
-      let creationSuccessAlert = UIAlertController(title: "Congratulations! Your account has been setup.", message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", preferredStyle: .alert )
-      creationSuccessAlert.addAction(UIAlertAction(title: "Login", style: .default, handler: { (action) in
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let popUp = storyBoard.instantiateViewController(withIdentifier: "SPLoginController")
-        self.present(popUp, animated: true, completion: nil)
-      }))
-      self.present(creationSuccessAlert, animated: true, completion: nil)
+      showAlert(title: "Congratulations! Your account has been setup." , message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", style: .alert, handler: proceedToSPLogin)
     } else {
-      let passwordsDontMatchAlert = UIAlertController(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", preferredStyle: .alert)
-      passwordsDontMatchAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-        self.spCreateAccountPassword.text = ""
-        self.spCreateAccountConfirmPassword.text = ""
-      }))
-      self.present(passwordsDontMatchAlert, animated: true, completion: nil)
+      showAlert(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", style: .alert, handler: emptyFields)
     }
     
   }
@@ -182,7 +203,7 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
   
 }
 
-extension SPSignUpController {
+extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == spCreateAccountTypeOfCompany {
@@ -232,6 +253,72 @@ extension SPSignUpController {
   let cellPhoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"
   let cellPhoneTest = NSPredicate(format: "SELF MATCHES %@", cellPhoneRegEx)
   return cellPhoneTest.evaluate(with:cellPhone)
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    if currentTextField == spCreateAccountTypeOfCompany {
+      return typeOfCompany.count
+    } else if currentTextField == spCreateAccountState {
+      return states.count
+    } else{
+      return 0
+    }
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    if currentTextField == spCreateAccountTypeOfCompany {
+      return typeOfCompany[row]
+    } else if currentTextField == spCreateAccountState {
+      return states[row]
+    } else {
+      return ""
+    }
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+   
+    
+    if currentTextField == spCreateAccountTypeOfCompany {
+      spCreateAccountTypeOfCompany.text = typeOfCompany[row]
+      self.view.endEditing(true)
+    } else if currentTextField == spCreateAccountState{
+    spCreateAccountState.text = states[row]
+      self.view.endEditing(true)
+    }
+  }
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    self.pickerView.dataSource = self
+    self.pickerView.delegate = self
+    currentTextField = textField
+    if currentTextField == spCreateAccountTypeOfCompany{
+      currentTextField.inputView = pickerView
+    } else if currentTextField == spCreateAccountState {
+      currentTextField.inputView = pickerView
+    }
+  }
+  
+  func showAlert(title: String, message: String, style: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: handler)
+    alertController.addAction(okAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func proceedToSPLogin(sender: UIAlertAction) -> Void {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let popUp = storyBoard.instantiateViewController(withIdentifier: "SPLoginController")
+    self.present(popUp, animated: true, completion: nil)
+  }
+  
+  func emptyFields(sender: UIAlertAction) -> Void {
+    self.spCreateAccountPassword.text = ""
+    self.spCreateAccountConfirmPassword.text = ""
   }
   
 }

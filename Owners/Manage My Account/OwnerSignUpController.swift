@@ -28,6 +28,11 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var ownerScrollView: UIScrollView!
   
+  var selectedState: String?
+  var ownerController = MWOwnerController()
+  
+ let states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,8 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         configureTextFields()
         configureTapGesture()
-      
+        createToolBar()
+        createStatePicker()
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -45,6 +51,26 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+  
+  func createStatePicker() {
+    let statePicker = UIPickerView()
+    statePicker.delegate = self
+    
+    ownerCreateAccountState.inputView = statePicker
+    
+  }
+  
+  func createToolBar() {
+    let toolBar = UIToolbar()
+    toolBar.sizeToFit()
+    
+    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(OwnerSignUpController.handleTap))
+    
+    toolBar.setItems([doneButton], animated: false)
+    toolBar.isUserInteractionEnabled = true
+    
+    ownerCreateAccountState.inputAccessoryView = toolBar
   }
   
   private func configureTapGesture() {
@@ -140,53 +166,27 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate {
       
       
         if ownerCreateAccountConfirmPassword.text == ownerCreateAccountPassword.text {
-          let ownerController = OwnerController()
           
           ownerController.createNewOwner(email: email, password: password)
           
           ownerController.createOwnerData(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
           
-          
-          
-          
-          let creationSuccessAlert = UIAlertController(title: "Congratulations! Your account has been setup.", message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", preferredStyle: .alert )
-          creationSuccessAlert.addAction(UIAlertAction(title: "Login", style: .default, handler: { (action) in
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let popUp = storyBoard.instantiateViewController(withIdentifier: "LoginController")
-            self.present(popUp, animated: true, completion: nil)
-          }))
-          self.present(creationSuccessAlert, animated: true, completion: nil)
-          
+         showAlert(title: "Congratulations! Your account has been setup." , message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", style: .alert, handler: proceedToOwnerLogin)
         } else {
-            let passwordsDontMatchAlert = UIAlertController(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", preferredStyle: .alert)
-            passwordsDontMatchAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                self.ownerCreateAccountPassword.text = ""
-                self.ownerCreateAccountConfirmPassword.text = ""
-            }))
-            self.present(passwordsDontMatchAlert, animated: true, completion: nil)
+           showAlert(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", style: .alert, handler: emptyFields)
         }
-      }
+  
+    }
   
   
   @IBAction func dismissSignupVIew(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
   
-  func sendVerificationEmail() {
-    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-      if error != nil {
-        print("error sending email: \(String(describing: error?.localizedDescription))")
-      } else {
-        print("email verification sent")
-      }
-    })
-  }
-  
-  
   
 }
 
-extension OwnerSignUpController {
+extension OwnerSignUpController: UIPickerViewDataSource, UIPickerViewDelegate {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == ownerCreateAccountTypeOfOwner {
@@ -235,6 +235,42 @@ extension OwnerSignUpController {
     let cellPhoneRegEx = "^\\d{3}-\\d{3}-\\d{4}$"
     let cellPhoneTest = NSPredicate(format: "SELF MATCHES %@", cellPhoneRegEx)
     return cellPhoneTest.evaluate(with:cellPhone)
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return states.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return states[row]
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    selectedState = states[row]
+    ownerCreateAccountState.text = selectedState
+  }
+  
+  func showAlert(title: String, message: String, style: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: handler)
+    alertController.addAction(okAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func proceedToOwnerLogin(sender: UIAlertAction) -> Void {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let popUp = storyBoard.instantiateViewController(withIdentifier: "OwnerLoginController")
+    self.present(popUp, animated: true, completion: nil)
+  }
+  
+  func emptyFields(sender: UIAlertAction) -> Void {
+    self.ownerCreateAccountPassword.text = ""
+    self.ownerCreateAccountConfirmPassword.text = ""
   }
   
 }

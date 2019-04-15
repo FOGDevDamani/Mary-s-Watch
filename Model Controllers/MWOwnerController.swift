@@ -40,7 +40,7 @@ class MWOwnerController: UIViewController {
   
   
   func createOwnerData(typeOfOwner: String, firstName: String, lastName: String, email: String, cellPhone: String, address: String, state: String, city: String, zip: String, county: String, userName: String, password: String) {
-    let newOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, username: userName, password: password)
+	let newOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellphone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: userName, password: password)
     
     newOwnerReference.setData(newOwner.dictionary) { (error) in
       

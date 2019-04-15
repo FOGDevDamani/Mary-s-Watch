@@ -39,7 +39,44 @@ class Owner
 		self.username = username
 		self.password = password
 	}
+	
+	convenience init?(dictionary: [String : Any])
+	{
+		guard let typeOfCompany = dictionary["Type of Company"] as? String,
+			let firstName = dictionary["First Name"] as? String,
+			let lastName = dictionary["Last Name"] as? String,
+			let email = dictionary["Email"] as? String,
+			let cellPhone = dictionary["Cell Phone"] as? String,
+			let address = dictionary["Address"] as? String,
+			let state = dictionary["State"] as? String,
+			let city = dictionary["City"] as? String,
+			let zip = dictionary["Zipcode"] as? String,
+			let county = dictionary["County"] as? String,
+			let username = dictionary["Username"] as? String,
+			let password = dictionary["Password"] as? String else { return nil }
+		
+		self.init(typeOfOwner: typeOfCompany, firstName: firstName, lastName: lastName, email: email, cellphone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: username, password: password)
+	}
+	
+	var dictionary:[String:Any]
+	{
+		return [
+			"Type of Company": typeOfOwner,
+			"First Name": firstName,
+			"Last Name": lastName,
+			"Email": email,
+			"Cell Phone": cellPhone,
+			"Address": address,
+			"State": state,
+			"City": city,
+			"Zipcode": zipcode,
+			"County": county,
+			"Username": username,
+			"Password": password
+		]
+	}
   
 }
+
 
 

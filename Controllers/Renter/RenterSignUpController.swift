@@ -51,7 +51,7 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
     let statePicker = UIPickerView()
     statePicker.delegate = self
     
-    renterCreateAccountState.inputView = statePicker
+    renterSignUpView.renterStateTextField.inputView = statePicker
     
   }
   
@@ -64,7 +64,7 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
     toolBar.setItems([doneButton], animated: false)
     toolBar.isUserInteractionEnabled = true
     
-    renterCreateAccountState.inputAccessoryView = toolBar
+    renterSignUpView.renterStateTextField.inputAccessoryView = toolBar
   }
   
   private func confirgureTapGesture() {
@@ -101,9 +101,9 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
     renterSignUpView.renterCityTextField.delegate = self
     renterSignUpView.renterZipcodeTextField.delegate = self
     renterSignUpView.renterCountyTextField.delegate = self
-    renterSignUpView.renterUsernameField.delegate = self
-    renterSignUpView.renterPasswordField.delegate = self
-    renterSignUpView.renterConfirmPasswordField.delegate = self
+    renterSignUpView.renterUsernameTextField.delegate = self
+    renterSignUpView.renterPasswordTextField.delegate = self
+    renterSignUpView.renterConfirmPasswordTextField.delegate = self
   }
   
   
@@ -114,11 +114,11 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
       enterValidEmailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidEmailAlert, animated: true, completion: nil)
       return}
-    guard let password = renterSignUpView.renterPasswordField.text, renterSignUpView.renterPasswordField.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
+    guard let password = renterSignUpView.renterPasswordTextField.text, renterSignUpView.renterPasswordTextField.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
       enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidPasswordAlert, animated: true, completion: nil)
       return}
-    guard let username = renterSignUpView.renterUsernameField.text, renterSignUpView.renterUsernameField.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+    guard let username = renterSignUpView.renterUsernameTextField.text, renterSignUpView.renterUsernameTextField.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
       enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidUsernameAlert, animated: true, completion: nil)
       return }
@@ -156,7 +156,7 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
       return }
     
     
-    if renterSignUpView.renterConfirmPasswordField.text == renterSignUpView.renterPasswordField.text {
+    if renterSignUpView.renterConfirmPasswordTextField.text == renterSignUpView.renterPasswordTextField.text {
       
       renterController.createNewRenter(email: email, password: password)
       
@@ -201,7 +201,7 @@ extension RenterSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
     } else if textField == renterSignUpView.renterUsernameTextField {
       renterSignUpView.renterPasswordTextField.becomeFirstResponder()
     } else if textField == renterSignUpView.renterPasswordTextField {
-      renterCreateAccountConfirmPassword.becomeFirstResponder()
+      renterSignUpView.renterConfirmPasswordTextField.becomeFirstResponder()
     } else {
       textField.resignFirstResponder()
     }
@@ -241,7 +241,7 @@ extension RenterSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     selectedState = states[row]
-    renterCreateAccountState.text = selectedState
+    renterSignUpView.renterStateTextField.text = selectedState
   }
   
   func showAlert(title: String, message: String, style: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
@@ -259,8 +259,8 @@ extension RenterSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func emptyFields(sender: UIAlertAction) -> Void {
-    self.renterCreateAccountPassword.text = ""
-    self.renterCreateAccountConfirmPassword.text = ""
+    self.renterSignUpView.renterPasswordTextField.text = ""
+    self.renterSignUpView.renterConfirmPasswordTextField.text = ""
   }
   
 }

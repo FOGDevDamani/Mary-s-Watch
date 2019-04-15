@@ -141,7 +141,7 @@ class OwnerEditProfileController: UIViewController, UITextFieldDelegate {
         self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
         return }
       
-      let newEditOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, username: username, password: password)
+		let newEditOwner = Owner(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellphone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: username, password: password)
       
       let newEditOwnerReference = Firestore.firestore().collection("User").document("Owner")
       

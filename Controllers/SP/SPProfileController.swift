@@ -66,13 +66,7 @@ class SPProfileController: UIViewController, UITableViewDelegate, UITableViewDat
     }
   }
   
-  func uploadProfileImage(_ image: UIImage, completion: @escaping((_ url:String?) -> ())) {
-    guard let uid = Auth.auth().currentUser?.uid else {return}
-    let storageRef = Storage.storage().reference().child("user/\(uid)")
-    
-    let imageData = UIImage.jpegData(image)
-    
-  }
+  
   
   func loadData() {
     spReference.getDocument { (document, error) in

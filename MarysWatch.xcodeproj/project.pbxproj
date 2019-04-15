@@ -10,11 +10,13 @@
 		7C74BB2272C8649BBFCFBA42 /* Pods_MarysWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */; };
 		8DE565F3A1E39D3192A4770C /* Pods_MarysWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDA395F02F74F56B9F204E0 /* Pods_MarysWatchTests.framework */; };
 		942E741ABDA5C106419047E2 /* Pods_MarysWatchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9EA576C4AC33E55C8DD2DE /* Pods_MarysWatchUITests.framework */; };
-		BF62C98A2117801D00952242 /* UserDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C9892117801D00952242 /* UserDataController.swift */; };
+		BF472DDD2265367800415D75 /* OwnerSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF472DDC2265367700415D75 /* OwnerSignUpController.swift */; };
+		BF472DDF2265409100415D75 /* RenterSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF472DDE2265409100415D75 /* RenterSignUpView.swift */; };
+		BF472DE1226540A300415D75 /* ServiceProSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF472DE0226540A300415D75 /* ServiceProSignUpView.swift */; };
+		BF4E1D142265310E00E82699 /* OwnerSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E1D132265310E00E82699 /* OwnerSignUpView.swift */; };
 		BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */; };
 		BF62C992211A2E9E00952242 /* OwnersProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C991211A2E9E00952242 /* OwnersProfileController.swift */; };
 		BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */; };
-		BF62C996211BD85400952242 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C995211BD85300952242 /* CameraController.swift */; };
 		BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8275382113B78C0068CD56 /* AppDelegate.swift */; };
 		BF82753B2113B78C0068CD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF82753A2113B78C0068CD56 /* ViewController.swift */; };
 		BF8275402113B7C90068CD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF82753F2113B7C90068CD56 /* Assets.xcassets */; };
@@ -55,7 +57,6 @@
 		CB1DC0092211C9C700331EF8 /* SPTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DC0082211C9C700331EF8 /* SPTeamCell.swift */; };
 		CB1DC00B2211C9F300331EF8 /* SPCustomersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DC00A2211C9F300331EF8 /* SPCustomersCell.swift */; };
 		CB1DC00D2211CCEB00331EF8 /* SPProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DC00C2211CCEA00331EF8 /* SPProfileCell.swift */; };
-		CB26F71D2210AB0500DA2F68 /* TextfieldInputChecksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26F71C2210AB0500DA2F68 /* TextfieldInputChecksController.swift */; };
 		CB2BFE4E220E4EEB00B329C4 /* RenterSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2BFE4D220E4EEB00B329C4 /* RenterSignUpController.swift */; };
 		CB2BFE51220E801300B329C4 /* SPSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2BFE50220E801300B329C4 /* SPSignUpController.swift */; };
 		CB2BFE53220EAC2700B329C4 /* RenterLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2BFE52220EAC2700B329C4 /* RenterLoginController.swift */; };
@@ -74,7 +75,6 @@
 		CB59D1072229943900C80548 /* MWRenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1062229943900C80548 /* MWRenterController.swift */; };
 		CB59D1092229947300C80548 /* MWOwnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1082229947300C80548 /* MWOwnerController.swift */; };
 		CB59D10B222A367600C80548 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D10A222A367500C80548 /* AuthenticationManager.swift */; };
-		CB59D10D222A3B7400C80548 /* AuthErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */; };
 		CB5ACA4B2237267000A1B812 /* MWSPCompanyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */; };
 		CB7561ED22132BD000A30C37 /* Renter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561EC22132BD000A30C37 /* Renter.swift */; };
 		CB7561EF22134E1D00A30C37 /* SPCustomers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561EE22134E1D00A30C37 /* SPCustomers.swift */; };
@@ -117,11 +117,13 @@
 		73C7D777B7D8E0649AB51052 /* Pods-MarysWatchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchTests/Pods-MarysWatchTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D9E0E7F3358BFFD7188F21E /* Pods_MarysWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarysWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA6E2E43C1BAA84F72BD15E /* Pods-MarysWatchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarysWatchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarysWatchUITests/Pods-MarysWatchUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BF62C9892117801D00952242 /* UserDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataController.swift; sourceTree = "<group>"; };
+		BF472DDC2265367700415D75 /* OwnerSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerSignUpController.swift; path = Owner/OwnerSignUpController.swift; sourceTree = "<group>"; };
+		BF472DDE2265409100415D75 /* RenterSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterSignUpView.swift; sourceTree = "<group>"; };
+		BF472DE0226540A300415D75 /* ServiceProSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProSignUpView.swift; sourceTree = "<group>"; };
+		BF4E1D132265310E00E82699 /* OwnerSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerSignUpView.swift; sourceTree = "<group>"; };
 		BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileDetailsController.swift; sourceTree = "<group>"; };
 		BF62C991211A2E9E00952242 /* OwnersProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersProfileController.swift; sourceTree = "<group>"; };
 		BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersProfileCell.swift; sourceTree = "<group>"; };
-		BF62C995211BD85300952242 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		BF8275352113B78C0068CD56 /* MarysWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarysWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8275382113B78C0068CD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF82753A2113B78C0068CD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +173,6 @@
 		CB1DC0082211C9C700331EF8 /* SPTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTeamCell.swift; sourceTree = "<group>"; };
 		CB1DC00A2211C9F300331EF8 /* SPCustomersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCustomersCell.swift; sourceTree = "<group>"; };
 		CB1DC00C2211CCEA00331EF8 /* SPProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPProfileCell.swift; sourceTree = "<group>"; };
-		CB26F71C2210AB0500DA2F68 /* TextfieldInputChecksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldInputChecksController.swift; sourceTree = "<group>"; };
 		CB2BFE4D220E4EEB00B329C4 /* RenterSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterSignUpController.swift; sourceTree = "<group>"; };
 		CB2BFE50220E801300B329C4 /* SPSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSignUpController.swift; sourceTree = "<group>"; };
 		CB2BFE52220EAC2700B329C4 /* RenterLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenterLoginController.swift; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		CB59D1062229943900C80548 /* MWRenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWRenterController.swift; sourceTree = "<group>"; };
 		CB59D1082229947300C80548 /* MWOwnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWOwnerController.swift; sourceTree = "<group>"; };
 		CB59D10A222A367500C80548 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
-		CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorAlertController.swift; sourceTree = "<group>"; };
 		CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWSPCompanyDetailsController.swift; sourceTree = "<group>"; };
 		CB7561EC22132BD000A30C37 /* Renter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renter.swift; sourceTree = "<group>"; };
 		CB7561EE22134E1D00A30C37 /* SPCustomers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCustomers.swift; sourceTree = "<group>"; };
@@ -263,22 +263,192 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF5107A3225ADC7400ACCD60 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				BF8275382113B78C0068CD56 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		BF5107A4225ADCBD00ACCD60 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */,
+				BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */,
+				BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */,
+				BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */,
+				BF8E3F242113C46A00B1F133 /* OwnerAssetsViewCell.swift */,
+				BF8E3F2A2113C46D00B1F133 /* OwnerAssets.storyboard */,
+				BF8E3F292113C46D00B1F133 /* OwnerCustomers.storyboard */,
+				BF4E1D132265310E00E82699 /* OwnerSignUpView.swift */,
+			);
+			path = Owner;
+			sourceTree = "<group>";
+		};
+		BF5107A5225ADCC300ACCD60 /* Renter */ = {
+			isa = PBXGroup;
+			children = (
+				CBB2A1D0220F534900480015 /* RenterTeam.storyboard */,
+				CB942B8B2216093800EED989 /* RenterTeamCell.swift */,
+				CB38EF7C220EDB4600FE3936 /* RenterProfile.storyboard */,
+				CB38EF78220EDAA900FE3936 /* RenterProfileCell.swift */,
+				BF472DDE2265409100415D75 /* RenterSignUpView.swift */,
+			);
+			path = Renter;
+			sourceTree = "<group>";
+		};
+		BF5107A6225ADCC900ACCD60 /* SP */ = {
+			isa = PBXGroup;
+			children = (
+				CB1DC00C2211CCEA00331EF8 /* SPProfileCell.swift */,
+				CB19D5B42211C50000040989 /* SPProfile.storyboard */,
+				CB1DC00A2211C9F300331EF8 /* SPCustomersCell.swift */,
+				CB19D5B22211C49800040989 /* SPCustomers.storyboard */,
+				CB1DC0082211C9C700331EF8 /* SPTeamCell.swift */,
+				CB19D5B02211C2D800040989 /* SPTeam.storyboard */,
+				BF472DE0226540A300415D75 /* ServiceProSignUpView.swift */,
+			);
+			path = SP;
+			sourceTree = "<group>";
+		};
+		BF5107A7225ADCCE00ACCD60 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				CBF19CEA2218AD78001B1239 /* OwnerW-9Controller.swift */,
+				BF8E3F282113C46C00B1F133 /* OwnerTeamViewCell.swift */,
+				BF8E3F272113C46C00B1F133 /* OwnerTeamDisplayController.swift */,
+				BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */,
+				BFE2F2C62141E1F400C946A1 /* OwnerSignUpController.swift */,
+				BFE2F2B62138BD9600C946A1 /* OwnerLoginController.swift */,
+				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
+				BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */,
+				BF8E3F2C2113C46E00B1F133 /* CompanyDetailsController.swift */,
+				BF62C991211A2E9E00952242 /* OwnersProfileController.swift */,
+				BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */,
+				BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */,
+				BF8E3F252113C46B00B1F133 /* OwnerAssetsController.swift */,
+				BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */,
+			);
+			path = Owner;
+			sourceTree = "<group>";
+		};
+		BF5107A8225ADCD300ACCD60 /* Renter */ = {
+			isa = PBXGroup;
+			children = (
+				CBB2A1CE220F530000480015 /* RenterTeamDisplayController.swift */,
+				CBB2A1CC220F52E100480015 /* RenterTeamController.swift */,
+				CB38EF7A220EDAF200FE3936 /* RenterEditProfileController.swift */,
+				CB2BFE4D220E4EEB00B329C4 /* RenterSignUpController.swift */,
+				CB2BFE52220EAC2700B329C4 /* RenterLoginController.swift */,
+				CB38EF74220ED9FF00FE3936 /* RenterProfileController.swift */,
+				CB38EF76220EDA4700FE3936 /* RenterProfileDetailsController.swift */,
+			);
+			path = Renter;
+			sourceTree = "<group>";
+		};
+		BF5107A9225ADCE000ACCD60 /* SP */ = {
+			isa = PBXGroup;
+			children = (
+				CB3DB9A822187AFC004A28FB /* SPTypeOfServiceController.swift */,
+				CB3DB9AA22187B7E004A28FB /* SPW-9Controller.swift */,
+				CB3DB9A622187591004A28FB /* SPCompanyDetails.swift */,
+				CB19D5B82211C5A600040989 /* SPEditProfileController.swift */,
+				CB19D5BA2211C5BE00040989 /* SPProfileDetailsController.swift */,
+				CB19D5B62211C57400040989 /* SPProfileController.swift */,
+				CB19D5C22211C6BE00040989 /* SPCustomerDisplayController.swift */,
+				CB19D5C02211C6A200040989 /* SPCustomersController.swift */,
+				CB19D5BE2211C60600040989 /* SpTeamDisplayController.swift */,
+				CB19D5BC2211C5DF00040989 /* SPTeamController.swift */,
+				CB2BFE50220E801300B329C4 /* SPSignUpController.swift */,
+				CB2BFE54220EAC7C00B329C4 /* SPLoginController.swift */,
+			);
+			path = SP;
+			sourceTree = "<group>";
+		};
+		BF5107AA225ADCEE00ACCD60 /* Owner */ = {
+			isa = PBXGroup;
+			children = (
+				CB9B286A22130B7B00FDA430 /* Owner.swift */,
+				CB7561F62213700400A30C37 /* OwnerTeam.swift */,
+				CB7561FA221370F900A30C37 /* OwnerAssets.swift */,
+				CB7561F82213709800A30C37 /* OwnerCustomers.swift */,
+				CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */,
+			);
+			path = Owner;
+			sourceTree = "<group>";
+		};
+		BF5107AB225ADCF300ACCD60 /* Renter */ = {
+			isa = PBXGroup;
+			children = (
+				CB7561EC22132BD000A30C37 /* Renter.swift */,
+				CB7561F022135F6300A30C37 /* RenterTeam.swift */,
+			);
+			path = Renter;
+			sourceTree = "<group>";
+		};
+		BF5107AC225ADCF900ACCD60 /* SP */ = {
+			isa = PBXGroup;
+			children = (
+				CB7561F222136DF800A30C37 /* ServiceProvider.swift */,
+				CB7561EE22134E1D00A30C37 /* SPCustomers.swift */,
+				CB7561F422136F5D00A30C37 /* SPTeam.swift */,
+				CB3DB9AC22187E8E004A28FB /* CompanyDetails.swift */,
+			);
+			path = SP;
+			sourceTree = "<group>";
+		};
+		BF76FBD9225ADB29006B7782 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF5107A6225ADCC900ACCD60 /* SP */,
+				BF5107A5225ADCC300ACCD60 /* Renter */,
+				BF5107A4225ADCBD00ACCD60 /* Owner */,
+				BFE2F2BA2138C25000C946A1 /* Main.storyboard */,
+				BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF76FBDA225ADB2B006B7782 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF5107A9225ADCE000ACCD60 /* SP */,
+				BF5107A8225ADCD300ACCD60 /* Renter */,
+				BF5107A7225ADCCE00ACCD60 /* Owner */,
+				BF82753A2113B78C0068CD56 /* ViewController.swift */,
+				BF472DDC2265367700415D75 /* OwnerSignUpController.swift */,
+				BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */,
+				BFE2F2BD2138C32C00C946A1 /* LandingPageController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF76FBDB225ADB2E006B7782 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF82753F2113B7C90068CD56 /* Assets.xcassets */,
+				BF8275442113B7C90068CD56 /* Info.plist */,
+				CBEC2C61222CA569009CAFE4 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		BF82752C2113B78C0068CD56 = {
 			isa = PBXGroup;
 			children = (
+				BF5107A3225ADC7400ACCD60 /* AppDelegate */,
+				BF76FBDA225ADB2B006B7782 /* Controllers */,
+				14B2BAE5361E7B89687C6952 /* Frameworks */,
 				BF8275372113B78C0068CD56 /* MarysWatch */,
-				BF8E3F1A2113C2A500B1F133 /* Owners */,
-				CB2BFE4B220E4E0000B329C4 /* Renters */,
-				BF8E3F1C2113C2B300B1F133 /* ServicePros */,
-				CB26F71B2210AA7200DA2F68 /* Textfield checking */,
-				CB06196221FD658B000ACFBF /* MWErrors */,
-				CB0FABB12225DC7A00447C50 /* Model Controllers */,
-				BF8E3F402113C4DF00B1F133 /* Model */,
 				BF82754C2113B7CB0068CD56 /* MarysWatchTests */,
 				BF8275572113B7CB0068CD56 /* MarysWatchUITests */,
-				BF8275362113B78C0068CD56 /* Products */,
+				CB0FABB12225DC7A00447C50 /* Model Controllers */,
+				BF8E3F402113C4DF00B1F133 /* Models */,
 				13A41558B8FCDD12CD8939E2 /* Pods */,
-				14B2BAE5361E7B89687C6952 /* Frameworks */,
+				BF8275362113B78C0068CD56 /* Products */,
+				BF76FBDB225ADB2E006B7782 /* Resources */,
+				BF76FBD9225ADB29006B7782 /* Views */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,15 +466,6 @@
 			isa = PBXGroup;
 			children = (
 				CB0FABB02223FA8C00447C50 /* MarysWatch.entitlements */,
-				BF8275382113B78C0068CD56 /* AppDelegate.swift */,
-				BF82753A2113B78C0068CD56 /* ViewController.swift */,
-				BFE2F2BA2138C25000C946A1 /* Main.storyboard */,
-				BFE2F2BC2138C32B00C946A1 /* ChooseUserController.swift */,
-				BFE2F2BD2138C32C00C946A1 /* LandingPageController.swift */,
-				BF82753F2113B7C90068CD56 /* Assets.xcassets */,
-				BF8275412113B7C90068CD56 /* LaunchScreen.storyboard */,
-				BF8275442113B7C90068CD56 /* Info.plist */,
-				CBEC2C61222CA569009CAFE4 /* GoogleService-Info.plist */,
 			);
 			path = MarysWatch;
 			sourceTree = "<group>";
@@ -327,76 +488,14 @@
 			path = MarysWatchUITests;
 			sourceTree = "<group>";
 		};
-		BF8E3F1A2113C2A500B1F133 /* Owners */ = {
+		BF8E3F402113C4DF00B1F133 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF8E3F1D2113C2DF00B1F133 /* Manage My Account */,
+				BF5107AC225ADCF900ACCD60 /* SP */,
+				BF5107AB225ADCF300ACCD60 /* Renter */,
+				BF5107AA225ADCEE00ACCD60 /* Owner */,
 			);
-			path = Owners;
-			sourceTree = "<group>";
-		};
-		BF8E3F1C2113C2B300B1F133 /* ServicePros */ = {
-			isa = PBXGroup;
-			children = (
-				CB2BFE4F220E7FDE00B329C4 /* Manage My Account */,
-			);
-			path = ServicePros;
-			sourceTree = "<group>";
-		};
-		BF8E3F1D2113C2DF00B1F133 /* Manage My Account */ = {
-			isa = PBXGroup;
-			children = (
-				BF8E3F2A2113C46D00B1F133 /* OwnerAssets.storyboard */,
-				BF8E3F252113C46B00B1F133 /* OwnerAssetsController.swift */,
-				BF8E3F302113C47000B1F133 /* OwnerAssetsDisplayController.swift */,
-				BF8E3F242113C46A00B1F133 /* OwnerAssetsViewCell.swift */,
-				BF8E3F292113C46D00B1F133 /* OwnerCustomers.storyboard */,
-				BF8E3F2B2113C46E00B1F133 /* OwnerCustomersController.swift */,
-				BF8E3F2D2113C46F00B1F133 /* OwnerCustomerViewCell.swift */,
-				BF8E3F2E2113C46F00B1F133 /* OwnersCustomerDisplayController.swift */,
-				BF62C991211A2E9E00952242 /* OwnersProfileController.swift */,
-				BF8E3F2C2113C46E00B1F133 /* CompanyDetailsController.swift */,
-				BF62C995211BD85300952242 /* CameraController.swift */,
-				BF62C993211A2FAE00952242 /* OwnersProfileCell.swift */,
-				BF62C98F2117E37E00952242 /* OwnerProfileDetailsController.swift */,
-				BF8E3F262113C46B00B1F133 /* OwnerEditProfileController.swift */,
-				BFE2F2B62138BD9600C946A1 /* OwnerLoginController.swift */,
-				BF8E3F2F2113C47000B1F133 /* OwnerProfile.storyboard */,
-				BFE2F2C62141E1F400C946A1 /* OwnerSignUpController.swift */,
-				BF62C9892117801D00952242 /* UserDataController.swift */,
-				BF8E3F232113C46A00B1F133 /* OwnerTeam.storyboard */,
-				BF8E3F222113C46900B1F133 /* OwnerTeamController.swift */,
-				BF8E3F272113C46C00B1F133 /* OwnerTeamDisplayController.swift */,
-				BF8E3F282113C46C00B1F133 /* OwnerTeamViewCell.swift */,
-				CBF19CEA2218AD78001B1239 /* OwnerW-9Controller.swift */,
-			);
-			path = "Manage My Account";
-			sourceTree = "<group>";
-		};
-		BF8E3F402113C4DF00B1F133 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CB9B286A22130B7B00FDA430 /* Owner.swift */,
-				CB7561F62213700400A30C37 /* OwnerTeam.swift */,
-				CB7561F82213709800A30C37 /* OwnerCustomers.swift */,
-				CB7561FA221370F900A30C37 /* OwnerAssets.swift */,
-				CB7561EC22132BD000A30C37 /* Renter.swift */,
-				CB7561F022135F6300A30C37 /* RenterTeam.swift */,
-				CB7561F222136DF800A30C37 /* ServiceProvider.swift */,
-				CB7561EE22134E1D00A30C37 /* SPCustomers.swift */,
-				CB7561F422136F5D00A30C37 /* SPTeam.swift */,
-				CB3DB9AC22187E8E004A28FB /* CompanyDetails.swift */,
-				CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CB06196221FD658B000ACFBF /* MWErrors */ = {
-			isa = PBXGroup;
-			children = (
-				CB59D10C222A3B7400C80548 /* AuthErrorAlertController.swift */,
-			);
-			path = MWErrors;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CB0FABB12225DC7A00447C50 /* Model Controllers */ = {
@@ -409,65 +508,6 @@
 				CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */,
 			);
 			path = "Model Controllers";
-			sourceTree = "<group>";
-		};
-		CB26F71B2210AA7200DA2F68 /* Textfield checking */ = {
-			isa = PBXGroup;
-			children = (
-				CB26F71C2210AB0500DA2F68 /* TextfieldInputChecksController.swift */,
-			);
-			path = "Textfield checking";
-			sourceTree = "<group>";
-		};
-		CB2BFE4B220E4E0000B329C4 /* Renters */ = {
-			isa = PBXGroup;
-			children = (
-				CB2BFE4C220E4E0B00B329C4 /* Manage My Account */,
-			);
-			path = Renters;
-			sourceTree = "<group>";
-		};
-		CB2BFE4C220E4E0B00B329C4 /* Manage My Account */ = {
-			isa = PBXGroup;
-			children = (
-				CB2BFE4D220E4EEB00B329C4 /* RenterSignUpController.swift */,
-				CB2BFE52220EAC2700B329C4 /* RenterLoginController.swift */,
-				CB38EF74220ED9FF00FE3936 /* RenterProfileController.swift */,
-				CB38EF76220EDA4700FE3936 /* RenterProfileDetailsController.swift */,
-				CB38EF78220EDAA900FE3936 /* RenterProfileCell.swift */,
-				CB38EF7A220EDAF200FE3936 /* RenterEditProfileController.swift */,
-				CB38EF7C220EDB4600FE3936 /* RenterProfile.storyboard */,
-				CBB2A1CC220F52E100480015 /* RenterTeamController.swift */,
-				CBB2A1CE220F530000480015 /* RenterTeamDisplayController.swift */,
-				CB942B8B2216093800EED989 /* RenterTeamCell.swift */,
-				CBB2A1D0220F534900480015 /* RenterTeam.storyboard */,
-			);
-			path = "Manage My Account";
-			sourceTree = "<group>";
-		};
-		CB2BFE4F220E7FDE00B329C4 /* Manage My Account */ = {
-			isa = PBXGroup;
-			children = (
-				CB2BFE50220E801300B329C4 /* SPSignUpController.swift */,
-				CB2BFE54220EAC7C00B329C4 /* SPLoginController.swift */,
-				CB19D5B02211C2D800040989 /* SPTeam.storyboard */,
-				CB19D5BC2211C5DF00040989 /* SPTeamController.swift */,
-				CB19D5BE2211C60600040989 /* SpTeamDisplayController.swift */,
-				CB1DC0082211C9C700331EF8 /* SPTeamCell.swift */,
-				CB19D5B22211C49800040989 /* SPCustomers.storyboard */,
-				CB19D5C02211C6A200040989 /* SPCustomersController.swift */,
-				CB19D5C22211C6BE00040989 /* SPCustomerDisplayController.swift */,
-				CB1DC00A2211C9F300331EF8 /* SPCustomersCell.swift */,
-				CB19D5B42211C50000040989 /* SPProfile.storyboard */,
-				CB19D5B62211C57400040989 /* SPProfileController.swift */,
-				CB19D5BA2211C5BE00040989 /* SPProfileDetailsController.swift */,
-				CB19D5B82211C5A600040989 /* SPEditProfileController.swift */,
-				CB1DC00C2211CCEA00331EF8 /* SPProfileCell.swift */,
-				CB3DB9A622187591004A28FB /* SPCompanyDetails.swift */,
-				CB3DB9AA22187B7E004A28FB /* SPW-9Controller.swift */,
-				CB3DB9A822187AFC004A28FB /* SPTypeOfServiceController.swift */,
-			);
-			path = "Manage My Account";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -755,18 +795,19 @@
 				CB19D5C12211C6A200040989 /* SPCustomersController.swift in Sources */,
 				CB1DC00B2211C9F300331EF8 /* SPCustomersCell.swift in Sources */,
 				CB942B8C2216093900EED989 /* RenterTeamCell.swift in Sources */,
+				BF472DDD2265367800415D75 /* OwnerSignUpController.swift in Sources */,
 				CB7561ED22132BD000A30C37 /* Renter.swift in Sources */,
 				CB2BFE51220E801300B329C4 /* SPSignUpController.swift in Sources */,
 				BFE2F2BF2138C32C00C946A1 /* LandingPageController.swift in Sources */,
 				CB1DC00D2211CCEB00331EF8 /* SPProfileCell.swift in Sources */,
 				BFE2F2BE2138C32C00C946A1 /* ChooseUserController.swift in Sources */,
 				CB7561F92213709800A30C37 /* OwnerCustomers.swift in Sources */,
-				CB59D10D222A3B7400C80548 /* AuthErrorAlertController.swift in Sources */,
 				CB2BFE53220EAC2700B329C4 /* RenterLoginController.swift in Sources */,
 				BF8E3F3F2113C47100B1F133 /* OwnerAssetsDisplayController.swift in Sources */,
 				CB19D5B72211C57400040989 /* SPProfileController.swift in Sources */,
 				CB3DB9A722187594004A28FB /* SPCompanyDetails.swift in Sources */,
 				CB7561F322136DF800A30C37 /* ServiceProvider.swift in Sources */,
+				BF472DDF2265409100415D75 /* RenterSignUpView.swift in Sources */,
 				BFE2F2C72141E1F400C946A1 /* OwnerSignUpController.swift in Sources */,
 				BF8E3F362113C47100B1F133 /* OwnerTeamDisplayController.swift in Sources */,
 				CB9B286B22130B7B00FDA430 /* Owner.swift in Sources */,
@@ -774,7 +815,6 @@
 				CB19D5C32211C6BF00040989 /* SPCustomerDisplayController.swift in Sources */,
 				CB2BFE55220EAC7C00B329C4 /* SPLoginController.swift in Sources */,
 				CB7561F122135F6400A30C37 /* RenterTeam.swift in Sources */,
-				CB26F71D2210AB0500DA2F68 /* TextfieldInputChecksController.swift in Sources */,
 				CB19D5BD2211C5DF00040989 /* SPTeamController.swift in Sources */,
 				CBF19CEB2218AD79001B1239 /* OwnerW-9Controller.swift in Sources */,
 				BF62C9902117E37E00952242 /* OwnerProfileDetailsController.swift in Sources */,
@@ -789,9 +829,9 @@
 				BF8E3F352113C47100B1F133 /* OwnerEditProfileController.swift in Sources */,
 				CB59D1072229943900C80548 /* MWRenterController.swift in Sources */,
 				CBB2A1CD220F52E100480015 /* RenterTeamController.swift in Sources */,
-				BF62C98A2117801D00952242 /* UserDataController.swift in Sources */,
 				BF62C994211A2FAE00952242 /* OwnersProfileCell.swift in Sources */,
 				CB7561EF22134E1D00A30C37 /* SPCustomers.swift in Sources */,
+				BF472DE1226540A300415D75 /* ServiceProSignUpView.swift in Sources */,
 				CB3DB9AB22187B7E004A28FB /* SPW-9Controller.swift in Sources */,
 				CB7561FB221370F900A30C37 /* OwnerAssets.swift in Sources */,
 				BF8275392113B78C0068CD56 /* AppDelegate.swift in Sources */,
@@ -806,11 +846,11 @@
 				CB7561F522136F5D00A30C37 /* SPTeam.swift in Sources */,
 				CB3DB9A922187AFC004A28FB /* SPTypeOfServiceController.swift in Sources */,
 				CB3DB9AD22187E8E004A28FB /* CompanyDetails.swift in Sources */,
+				BF4E1D142265310E00E82699 /* OwnerSignUpView.swift in Sources */,
 				CB7561F72213700400A30C37 /* OwnerTeam.swift in Sources */,
 				BF8E3F3C2113C47100B1F133 /* OwnerCustomerViewCell.swift in Sources */,
 				BF62C992211A2E9E00952242 /* OwnersProfileController.swift in Sources */,
 				CB1DC0092211C9C700331EF8 /* SPTeamCell.swift in Sources */,
-				BF62C996211BD85400952242 /* CameraController.swift in Sources */,
 				BF8E3F3D2113C47100B1F133 /* OwnersCustomerDisplayController.swift in Sources */,
 				CBB2A1CF220F530000480015 /* RenterTeamDisplayController.swift in Sources */,
 				BF8E3F372113C47100B1F133 /* OwnerTeamViewCell.swift in Sources */,
@@ -981,8 +1021,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MarysWatch/MarysWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6NT6RWS97R;
-				INFOPLIST_FILE = MarysWatch/Info.plist;
+				DEVELOPMENT_TEAM = 8HWGTPK72S;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1001,8 +1041,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MarysWatch/MarysWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6NT6RWS97R;
-				INFOPLIST_FILE = MarysWatch/Info.plist;
+				DEVELOPMENT_TEAM = 8HWGTPK72S;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

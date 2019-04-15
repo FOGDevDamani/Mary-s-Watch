@@ -12,23 +12,15 @@ import FirebaseFirestore
 
 class RenterSignUpController: UIViewController, UITextFieldDelegate {
 
-  @IBOutlet weak var renterCreateAccountFirstName: UITextField!
-  @IBOutlet weak var renterCreateAccountLastName: UITextField!
-  @IBOutlet weak var renterCreateAccountEmail: UITextField!
-  @IBOutlet weak var renterCreateAccountCellPhone: UITextField!
-  @IBOutlet weak var renterCreateAccountAddress: UITextField!
-  @IBOutlet weak var renterCreateAccountState: UITextField!
-  @IBOutlet weak var renterCreateAccountCity: UITextField!
-  @IBOutlet weak var renterCreateAccountZip: UITextField!
-  @IBOutlet weak var renterCreateAccountCounty: UITextField!
-  @IBOutlet weak var renterCreateAccountUsername: UITextField!
-  @IBOutlet weak var renterCreateAccountPassword: UITextField!
-  @IBOutlet weak var renterCreateAccountConfirmPassword: UITextField!
-  
   @IBOutlet weak var renterScrollView: UIScrollView!
   
   var selectedState: String?
   let renterController = MWRenterController()
+	var renterSignUpView: RenterSignUpView!
+	{
+		guard isViewLoaded else { return nil }
+		return (view as! RenterSignUpView)
+	}
   
   let states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
   
@@ -100,71 +92,71 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
   }
   
   private func configureTextFields() {
-    renterCreateAccountFirstName.delegate = self
-    renterCreateAccountLastName.delegate = self
-    renterCreateAccountEmail.delegate = self
-    renterCreateAccountCellPhone.delegate = self
-    renterCreateAccountAddress.delegate = self
-    renterCreateAccountState.delegate = self
-    renterCreateAccountCity.delegate = self
-    renterCreateAccountZip.delegate = self
-    renterCreateAccountCounty.delegate = self
-    renterCreateAccountUsername.delegate = self
-    renterCreateAccountPassword.delegate = self
-    renterCreateAccountConfirmPassword.delegate = self
+    renterSignUpView.renterFirstNameTextField.delegate = self
+    renterSignUpView.renterLastNameTextField.delegate = self
+    renterSignUpView.renterEmailTextField.delegate = self
+    renterSignUpView.renterCellPhoneTextField.delegate = self
+    renterSignUpView.renterAddressTextField.delegate = self
+    renterSignUpView.renterStateTextField.delegate = self
+    renterSignUpView.renterCityTextField.delegate = self
+    renterSignUpView.renterZipcodeTextField.delegate = self
+    renterSignUpView.renterCountyTextField.delegate = self
+    renterSignUpView.renterUsernameField.delegate = self
+    renterSignUpView.renterPasswordField.delegate = self
+    renterSignUpView.renterConfirmPasswordField.delegate = self
   }
   
   
   
   
   @IBAction func signUpRenter(_ sender: Any) {
-    guard let email = renterCreateAccountEmail.text, renterCreateAccountEmail.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)
+    guard let email = renterSignUpView.renterEmailTextField.text, renterSignUpView.renterEmailTextField.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)
       enterValidEmailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidEmailAlert, animated: true, completion: nil)
       return}
-    guard let password = renterCreateAccountPassword.text, renterCreateAccountPassword.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
+    guard let password = renterSignUpView.renterPasswordField.text, renterSignUpView.renterPasswordField.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
       enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidPasswordAlert, animated: true, completion: nil)
       return}
-    guard let username = renterCreateAccountUsername.text, renterCreateAccountUsername.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+    guard let username = renterSignUpView.renterUsernameField.text, renterSignUpView.renterUsernameField.text?.count != 0  else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
       enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidUsernameAlert, animated: true, completion: nil)
       return }
-    guard let firstName = renterCreateAccountFirstName.text, renterCreateAccountFirstName.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let firstName =  renterSignUpView.renterFirstNameTextField.text,  renterSignUpView.renterFirstNameTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let lastName = renterCreateAccountLastName.text, renterCreateAccountLastName.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let lastName = renterSignUpView.renterLastNameTextField.text, renterSignUpView.renterLastNameTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return  }
-    guard let cellPhone = renterCreateAccountCellPhone.text, renterCreateAccountCellPhone.text?.count != 0, isPhoneNumberValid(cellPhone: cellPhone) else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Invalid Phone Number entered", message: "Phone format must follow: ***-***-****", preferredStyle: .alert)
+    guard let cellPhone = renterSignUpView.renterCellPhoneTextField.text, renterSignUpView.renterCellPhoneTextField.text?.count != 0, isPhoneNumberValid(cellPhone: cellPhone) else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Invalid Phone Number entered", message: "Phone format must follow: ***-***-****", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let address = renterCreateAccountAddress.text, renterCreateAccountAddress.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let address = renterSignUpView.renterAddressTextField.text, renterSignUpView.renterAddressTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let state = renterCreateAccountState.text, renterCreateAccountState.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let state = renterSignUpView.renterStateTextField.text, renterSignUpView.renterStateTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let city = renterCreateAccountCity.text, renterCreateAccountCity.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let city = renterSignUpView.renterCityTextField.text, renterSignUpView.renterCityTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let zip = renterCreateAccountZip.text, renterCreateAccountZip.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let zip = renterSignUpView.renterZipcodeTextField.text, renterSignUpView.renterZipcodeTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
-    guard let county = renterCreateAccountCounty.text, renterCreateAccountCounty.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let county = renterSignUpView.renterCountyTextField.text, renterSignUpView.renterCountyTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
     
-    if renterCreateAccountConfirmPassword.text == renterCreateAccountPassword.text {
+    if renterSignUpView.renterConfirmPasswordField.text == renterSignUpView.renterPasswordField.text {
       
       renterController.createNewRenter(email: email, password: password)
       
@@ -188,27 +180,27 @@ class RenterSignUpController: UIViewController, UITextFieldDelegate {
 extension RenterSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    if textField == renterCreateAccountFirstName {
-      renterCreateAccountLastName.becomeFirstResponder()
-    } else if textField == renterCreateAccountLastName{
-      renterCreateAccountEmail.becomeFirstResponder()
-    } else if textField == renterCreateAccountEmail {
-      renterCreateAccountCellPhone.becomeFirstResponder()
-    } else if textField == renterCreateAccountCellPhone {
-      renterCreateAccountAddress.becomeFirstResponder()
-    } else if textField == renterCreateAccountAddress {
-      renterCreateAccountState.becomeFirstResponder()
-    } else if textField == renterCreateAccountState{
-      renterCreateAccountCity.becomeFirstResponder()
-    } else if textField == renterCreateAccountCity {
-      renterCreateAccountZip.becomeFirstResponder()
-    } else if textField == renterCreateAccountZip {
-      renterCreateAccountCounty.becomeFirstResponder()
-    } else if textField == renterCreateAccountCounty {
-      renterCreateAccountUsername.becomeFirstResponder()
-    } else if textField == renterCreateAccountUsername {
-      renterCreateAccountPassword.becomeFirstResponder()
-    } else if textField == renterCreateAccountPassword {
+    if textField == renterSignUpView.renterFirstNameTextField {
+      renterSignUpView.renterLastNameTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterLastNameTextField{
+      renterSignUpView.renterEmailTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterEmailTextField {
+      renterSignUpView.renterCellPhoneTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterCellPhoneTextField{
+      renterSignUpView.renterAddressTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterAddressTextField {
+      renterSignUpView.renterStateTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterStateTextField{
+      renterSignUpView.renterCityTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterCityTextField {
+      renterSignUpView.renterZipcodeTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterZipcodeTextField {
+      renterSignUpView.renterCountyTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterCountyTextField {
+      renterSignUpView.renterUsernameTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterUsernameTextField {
+      renterSignUpView.renterPasswordTextField.becomeFirstResponder()
+    } else if textField == renterSignUpView.renterPasswordTextField {
       renterCreateAccountConfirmPassword.becomeFirstResponder()
     } else {
       textField.resignFirstResponder()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1jA-qp-ihE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1jA-qp-ihE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -616,7 +616,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAJ-Kg-0fP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17097" y="1851"/>
+            <point key="canvasLocation" x="-17168" y="1868"/>
         </scene>
         <!--Renter Login Controller-->
         <scene sceneID="bnt-e9-aik">
@@ -930,7 +930,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lb8-JF-Cwu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMq-hZ-zs6">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMq-hZ-zs6" customClass="ServiceProSignUpView" customModule="MarysWatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbV-4l-lgw">
@@ -966,6 +966,21 @@
                                             <constraint firstItem="YbV-4l-lgw" firstAttribute="leading" secondItem="XMq-hZ-zs6" secondAttribute="leading" constant="22" id="ePG-W8-vQh"/>
                                             <constraint firstAttribute="bottom" secondItem="YbV-4l-lgw" secondAttribute="bottom" constant="41" id="f0J-If-Dcr"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="spAddressTextField" destination="oWe-ig-EY1" id="lnC-MR-dg8"/>
+                                            <outlet property="spCellPhoneTextField" destination="6se-iI-4qg" id="wjJ-Sm-hLE"/>
+                                            <outlet property="spCityTextField" destination="S4M-aR-mHX" id="4ph-qA-hBj"/>
+                                            <outlet property="spConfirmPassword" destination="hBn-eS-2nD" id="Rsf-YT-L0M"/>
+                                            <outlet property="spCountyTextField" destination="m8T-tU-pYv" id="E1a-SH-aBB"/>
+                                            <outlet property="spEmailTextField" destination="Sbg-pT-Jgt" id="kKn-MB-wjr"/>
+                                            <outlet property="spFirstNameTextField" destination="p5n-Uu-3tq" id="qfL-Ir-qVN"/>
+                                            <outlet property="spLastNameTextField" destination="mGU-b4-602" id="Trh-t3-vVg"/>
+                                            <outlet property="spPasswordTextField" destination="qt4-H5-51g" id="dVV-Dr-qbV"/>
+                                            <outlet property="spStateTextField" destination="7In-Au-uUl" id="Xae-dJ-dB8"/>
+                                            <outlet property="spUsernameTextField" destination="FH9-dR-ZrR" id="9yw-Wc-IF4"/>
+                                            <outlet property="spZipcodeTextField" destination="yJM-U7-Kts" id="TBG-OV-Uvz"/>
+                                            <outlet property="typeOfServiceTextField" destination="Vmf-A0-d4x" id="IAO-F0-QN4"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7g-WE-ZKA">
                                         <rect key="frame" x="157" y="30" width="100" height="40"/>
@@ -1271,22 +1286,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="qiB-C8-GOK"/>
                     <size key="freeformSize" width="414" height="1000"/>
-                    <connections>
-                        <outlet property="spCreateAccountAddress" destination="oWe-ig-EY1" id="WTW-sM-HER"/>
-                        <outlet property="spCreateAccountCellPhone" destination="6se-iI-4qg" id="0Xf-ug-dof"/>
-                        <outlet property="spCreateAccountCity" destination="S4M-aR-mHX" id="RUp-hi-sQa"/>
-                        <outlet property="spCreateAccountConfirmPassword" destination="hBn-eS-2nD" id="gT1-0r-sbh"/>
-                        <outlet property="spCreateAccountCounty" destination="m8T-tU-pYv" id="ap7-Jt-oul"/>
-                        <outlet property="spCreateAccountEmail" destination="Sbg-pT-Jgt" id="hUl-BL-NDc"/>
-                        <outlet property="spCreateAccountFirstName" destination="p5n-Uu-3tq" id="hqz-hV-Kxj"/>
-                        <outlet property="spCreateAccountLastName" destination="mGU-b4-602" id="rjc-dI-uN4"/>
-                        <outlet property="spCreateAccountPassword" destination="qt4-H5-51g" id="d1r-r8-lIh"/>
-                        <outlet property="spCreateAccountState" destination="7In-Au-uUl" id="svk-DU-pgz"/>
-                        <outlet property="spCreateAccountTypeOfCompany" destination="Vmf-A0-d4x" id="J6k-Z5-Nsi"/>
-                        <outlet property="spCreateAccountUsername" destination="FH9-dR-ZrR" id="ORS-pd-jUE"/>
-                        <outlet property="spCreateAccountZip" destination="yJM-U7-Kts" id="kSV-YV-wFY"/>
-                        <outlet property="spSignUpScrollView" destination="lb8-JF-Cwu" id="nwE-fe-RF3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MK5-5T-fTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1303,7 +1302,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htD-Cr-Pvq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJv-XY-iDs">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJv-XY-iDs" customClass="OwnerSignUpView" customModule="MarysWatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Owner Account Setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mi-e7-Sqh">
@@ -1623,6 +1622,21 @@
                                             <constraint firstItem="7yq-KL-NsT" firstAttribute="leading" secondItem="ZJv-XY-iDs" secondAttribute="leading" constant="22" id="wNw-Tq-AwZ"/>
                                             <constraint firstAttribute="bottom" secondItem="7yq-KL-NsT" secondAttribute="bottom" constant="41" id="xzY-Tn-a32"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="ownerAddressTextField" destination="Tcs-Bh-DhI" id="plz-hM-nLi"/>
+                                            <outlet property="ownerCellPhoneTextField" destination="6ta-WB-6zS" id="Zme-QG-o8J"/>
+                                            <outlet property="ownerCityTextField" destination="mTS-UW-d6b" id="w9p-rP-rJw"/>
+                                            <outlet property="ownerConfirmPasswordTextField" destination="g56-mF-0xm" id="a69-pe-4rC"/>
+                                            <outlet property="ownerCountyTextField" destination="MZl-ra-sDd" id="EwE-uG-22i"/>
+                                            <outlet property="ownerEmailTextField" destination="Vdi-k1-hP7" id="w4c-7b-vOu"/>
+                                            <outlet property="ownerFirstNameTextField" destination="sZK-HZ-YO9" id="kiU-if-vHk"/>
+                                            <outlet property="ownerPasswordTextField" destination="g56-mF-0xm" id="cO2-ug-bnL"/>
+                                            <outlet property="ownerStateTextField" destination="22w-nt-7Uq" id="nlV-4e-QfL"/>
+                                            <outlet property="ownerUsernameTextField" destination="de4-gK-yvX" id="gDN-Vl-jNu"/>
+                                            <outlet property="ownerZipcodeTextField" destination="jgH-q4-xq4" id="o18-Zr-nAR"/>
+                                            <outlet property="ownerlasttNameTextField" destination="See-Of-Ef9" id="zso-40-pLt"/>
+                                            <outlet property="typeOfOwnerTextField" destination="h5u-dq-FRV" id="gT8-Vr-ajA"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1647,25 +1661,12 @@
                     <navigationItem key="navigationItem" id="Dry-1d-RK5"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="ownerCreateAccountAddress" destination="Tcs-Bh-DhI" id="dJD-gR-PIQ"/>
-                        <outlet property="ownerCreateAccountCellPhone" destination="6ta-WB-6zS" id="GtN-wy-2BW"/>
-                        <outlet property="ownerCreateAccountCity" destination="mTS-UW-d6b" id="7wn-jh-4zR"/>
-                        <outlet property="ownerCreateAccountConfirmPassword" destination="g56-mF-0xm" id="Ffi-04-DvG"/>
-                        <outlet property="ownerCreateAccountCounty" destination="MZl-ra-sDd" id="DF4-it-KAX"/>
-                        <outlet property="ownerCreateAccountEmail" destination="Vdi-k1-hP7" id="ZJV-Ge-qCh"/>
-                        <outlet property="ownerCreateAccountFirstName" destination="sZK-HZ-YO9" id="fsz-oO-CQh"/>
-                        <outlet property="ownerCreateAccountLastName" destination="See-Of-Ef9" id="aA5-2P-SLy"/>
-                        <outlet property="ownerCreateAccountPassword" destination="kUA-Sq-e91" id="4pY-Hn-zG6"/>
-                        <outlet property="ownerCreateAccountState" destination="22w-nt-7Uq" id="cbh-am-OuT"/>
-                        <outlet property="ownerCreateAccountTypeOfOwner" destination="h5u-dq-FRV" id="2hj-d8-G9T"/>
-                        <outlet property="ownerCreateAccountUsername" destination="de4-gK-yvX" id="flA-Xx-bZR"/>
-                        <outlet property="ownerCreateAccountZip" destination="jgH-q4-xq4" id="EMc-Ye-5LE"/>
                         <outlet property="ownerScrollView" destination="htD-Cr-Pvq" id="inE-fE-JMW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iP-Qf-5Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17097.101449275364" y="1082.608695652174"/>
+            <point key="canvasLocation" x="-17167" y="1083"/>
         </scene>
         <!--Renter Sign Up Controller-->
         <scene sceneID="Vcm-T1-ED6">
@@ -1678,7 +1679,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vz-ud-N6I">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fl6-HX-nL1">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fl6-HX-nL1" customClass="RenterSignUpView" customModule="MarysWatch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcR-8c-fML">
@@ -1715,6 +1716,20 @@
                                             <constraint firstAttribute="bottom" secondItem="YcR-8c-fML" secondAttribute="bottom" constant="41" id="Zbb-Y7-VAb"/>
                                             <constraint firstAttribute="trailing" secondItem="nal-1e-qFw" secondAttribute="trailing" constant="21" id="j6r-a6-nZd"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="renterAddressTextField" destination="Cj6-G0-llo" id="sJp-Oe-nfh"/>
+                                            <outlet property="renterCellPhoneTextField" destination="Mov-Zf-aE6" id="qr4-vm-qtj"/>
+                                            <outlet property="renterCityTextField" destination="hCd-Si-rGt" id="3R9-er-XAi"/>
+                                            <outlet property="renterConfirmPasswordField" destination="ORE-Q1-syR" id="i8x-wb-sub"/>
+                                            <outlet property="renterCountyTextField" destination="D5X-0f-6n2" id="yCp-IL-CJB"/>
+                                            <outlet property="renterEmailTextField" destination="JA7-55-VhT" id="HoH-4Q-eOO"/>
+                                            <outlet property="renterFirstNameTextField" destination="4c2-L2-gsa" id="76i-9g-2vd"/>
+                                            <outlet property="renterLastNameTextField" destination="vKh-YI-q73" id="p4V-8v-NEH"/>
+                                            <outlet property="renterPasswordField" destination="LCE-qY-QYT" id="ddS-JI-YwB"/>
+                                            <outlet property="renterStateTextField" destination="Hl1-GB-wJr" id="L4I-d3-nfa"/>
+                                            <outlet property="renterUsernameField" destination="P3e-io-rkb" id="dqW-Vv-HWy"/>
+                                            <outlet property="renterZipcodeTextField" destination="2AC-ib-nEG" id="UmY-PN-WbM"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1D-Uw-Z8e">
                                         <rect key="frame" x="157" y="30" width="100" height="40"/>
@@ -2001,18 +2016,6 @@
                     <navigationItem key="navigationItem" id="0B5-EY-mPE"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="renterCreateAccountAddress" destination="Cj6-G0-llo" id="ZdI-YU-rt6"/>
-                        <outlet property="renterCreateAccountCellPhone" destination="Mov-Zf-aE6" id="g8Q-n6-Qft"/>
-                        <outlet property="renterCreateAccountCity" destination="hCd-Si-rGt" id="hdT-p8-ahu"/>
-                        <outlet property="renterCreateAccountConfirmPassword" destination="ORE-Q1-syR" id="3Iz-wA-9Bi"/>
-                        <outlet property="renterCreateAccountCounty" destination="D5X-0f-6n2" id="exL-4L-vQs"/>
-                        <outlet property="renterCreateAccountEmail" destination="JA7-55-VhT" id="qe2-ZF-30r"/>
-                        <outlet property="renterCreateAccountFirstName" destination="4c2-L2-gsa" id="YbH-AW-Rz5"/>
-                        <outlet property="renterCreateAccountLastName" destination="vKh-YI-q73" id="63g-Eg-qtO"/>
-                        <outlet property="renterCreateAccountPassword" destination="LCE-qY-QYT" id="Dic-Hp-PZn"/>
-                        <outlet property="renterCreateAccountState" destination="Hl1-GB-wJr" id="0kP-aG-09t"/>
-                        <outlet property="renterCreateAccountUsername" destination="P3e-io-rkb" id="QxK-CY-KqU"/>
-                        <outlet property="renterCreateAccountZip" destination="2AC-ib-nEG" id="I9b-qP-N5F"/>
                         <outlet property="renterScrollView" destination="4Vz-ud-N6I" id="2By-uU-xbK"/>
                     </connections>
                 </viewController>
@@ -2022,15 +2025,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="front" width="795" height="1349.25"/>
-        <image name="login button-1" width="633" height="105"/>
-        <image name="marys-watch-horizontal-high-rez" width="102" height="38.639999389648438"/>
-        <image name="mw logo tm" width="186" height="76.5"/>
-        <image name="submit" width="178.5" height="57"/>
+        <image name="front" width="1060" height="1799"/>
+        <image name="login button-1" width="844" height="140"/>
+        <image name="marys-watch-horizontal-high-rez" width="425" height="161"/>
+        <image name="mw logo tm" width="248" height="102"/>
+        <image name="submit" width="238" height="76"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zgp-Ig-XSb"/>
-        <segue reference="QLk-XQ-qPm"/>
+        <segue reference="fhs-6u-PCi"/>
         <segue reference="VQC-Wx-3aP"/>
     </inferredMetricsTieBreakers>
 </document>

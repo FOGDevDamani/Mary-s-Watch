@@ -11,25 +11,16 @@ import Firebase
 
 
 class SPSignUpController: UIViewController, UITextFieldDelegate {
-
-  @IBOutlet weak var spCreateAccountTypeOfCompany: UITextField!
-  @IBOutlet weak var spCreateAccountFirstName: UITextField!
-  @IBOutlet weak var spCreateAccountLastName: UITextField!
-  @IBOutlet weak var spCreateAccountEmail: UITextField!
-  @IBOutlet weak var spCreateAccountCellPhone: UITextField!
-  @IBOutlet weak var spCreateAccountAddress: UITextField!
-  @IBOutlet weak var spCreateAccountState: UITextField!
-  @IBOutlet weak var spCreateAccountCity: UITextField!
-  @IBOutlet weak var spCreateAccountZip: UITextField!
-  @IBOutlet weak var spCreateAccountCounty: UITextField!
-  @IBOutlet weak var spCreateAccountUsername: UITextField!
-  @IBOutlet weak var spCreateAccountPassword: UITextField!
-  @IBOutlet weak var spCreateAccountConfirmPassword: UITextField!
   
   @IBOutlet weak var spSignUpScrollView: UIScrollView!
   
   var currentTextField = UITextField()
   var pickerView = UIPickerView()
+  var spSignUpView: ServiceProSignUpView!
+	{
+		guard isViewLoaded else { return nil }
+		return (view as! ServiceProSignUpView)
+	}
   
  let states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
   
@@ -46,8 +37,8 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     pickerView.delegate = self
     pickerView.dataSource = self
     
-    spCreateAccountState.inputView = pickerView
-    spCreateAccountTypeOfCompany.inputView = pickerView
+    spSignUpView.spStateTextField.inputView = pickerView
+    spSignUpView.typeOfServiceTextField.inputView = pickerView
     
     
         configureTextFields()
@@ -89,19 +80,19 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
   }
   
   private func configureTextFields() {
-    spCreateAccountTypeOfCompany.delegate = self
-    spCreateAccountFirstName.delegate = self
-    spCreateAccountLastName.delegate = self
-    spCreateAccountEmail.delegate = self
-    spCreateAccountCellPhone.delegate = self
-    spCreateAccountAddress.delegate = self
-    spCreateAccountState.delegate = self
-    spCreateAccountCity.delegate = self
-    spCreateAccountZip.delegate = self
-    spCreateAccountCounty.delegate = self
-    spCreateAccountUsername.delegate = self
-    spCreateAccountPassword.delegate = self
-    spCreateAccountConfirmPassword.delegate = self
+    spSignUpView.typeOfServiceTextField.delegate = self
+    spSignUpView.spFirstNameTextField.delegate = self
+    spSignUpView.spLastNameTextField.delegate = self
+    spSignUpView.spEmailTextField.delegate = self
+    spSignUpView.spCellPhoneTextField.delegate = self
+    spSignUpView.spAddressTextField.delegate = self
+    spSignUpView.spStateTextField.delegate = self
+    spSignUpView.spCityTextField.delegate = self
+    spSignUpView.spZipcodeTextField.delegate = self
+    spSignUpView.spCountyTextField.delegate = self
+    spSignUpView.spUsernameTextField.delegate = self
+    spSignUpView.spPasswordTextField.delegate = self
+    spSignUpView.spConfirmPassword.delegate = self
   }
   
   
@@ -114,76 +105,76 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
     toolBar.setItems([doneButton], animated: false)
     toolBar.isUserInteractionEnabled = true
     
-    spCreateAccountState.inputAccessoryView = toolBar
-    spCreateAccountTypeOfCompany.inputAccessoryView = toolBar
+    spSignUpView.spStateTextField.inputAccessoryView = toolBar
+    spSignUpView.typeOfServiceTextField.inputAccessoryView = toolBar
   }
   
   
   
   
   @IBAction func signUpSP(_ sender: Any) {
-    guard let typeOfCompany = spCreateAccountTypeOfCompany.text, spCreateAccountTypeOfCompany.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let typeOfCompany = spSignUpView.typeOfServiceTextField.text,spSignUpView.typeOfServiceTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let email = spCreateAccountEmail.text, spCreateAccountEmail.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)
+    guard let email = spSignUpView.spEmailTextField.text, spSignUpView.spEmailTextField.text?.count != 0, isValidEmail(emailID: email) != false  else { let enterValidEmailAlert = UIAlertController(title: "Email is invalid", message: "Please enter a valid email.", preferredStyle: .alert)
       enterValidEmailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidEmailAlert, animated: true, completion: nil)
       return}
     
-    guard let password = spCreateAccountPassword.text, spCreateAccountPassword.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
+    guard let password = spSignUpView.spPasswordTextField.text, spSignUpView.spPasswordTextField.text?.count != 0, isPasswordValid(password: password) != false else { let enterValidPasswordAlert = UIAlertController(title: "Password is invalid", message: "Please enter a valid password.", preferredStyle: .alert)
       enterValidPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidPasswordAlert, animated: true, completion: nil)
       return}
     
-    guard let username = spCreateAccountUsername.text, spCreateAccountUsername.text?.count != 0 else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
+    guard let username = spSignUpView.spUsernameTextField.text, spSignUpView.spUsernameTextField.text?.count != 0 else { let enterValidUsernameAlert = UIAlertController(title: "Username is invalid", message: "Please enter a valid username with one lowercase letter, one uppercase letter and one number.", preferredStyle: .alert)
       enterValidUsernameAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(enterValidUsernameAlert, animated: true, completion: nil)
       return }
     
-    guard let firstName = spCreateAccountFirstName.text, spCreateAccountFirstName.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let firstName = spSignUpView.spFirstNameTextField.text, spSignUpView.spFirstNameTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let lastName = spCreateAccountLastName.text, spCreateAccountLastName.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let lastName = spSignUpView.spLastNameTextField.text, spSignUpView.spLastNameTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return  }
     
-    guard let cellPhone = spCreateAccountCellPhone.text, spCreateAccountCellPhone.text?.count != 0, isPhoneNumberValid(cellPhone: cellPhone) else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Invalid Phone Number entered", message: "Phone format must follow: ***-***-****", preferredStyle: .alert)
+    guard let cellPhone = spSignUpView.spCellPhoneTextField.text, spSignUpView.spCellPhoneTextField.text?.count != 0, isPhoneNumberValid(cellPhone: cellPhone) else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Invalid Phone Number entered", message: "Phone format must follow: ***-***-****", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let address = spCreateAccountAddress.text, spCreateAccountAddress.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let address = spSignUpView.spAddressTextField.text, spSignUpView.spAddressTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let state = spCreateAccountState.text, spCreateAccountState.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let state = spSignUpView.spStateTextField.text, spSignUpView.spStateTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let city = spCreateAccountCity.text, spCreateAccountCity.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let city = spSignUpView.spCityTextField.text, spSignUpView.spCityTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let zip = spCreateAccountZip.text, spCreateAccountZip.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let zip = spSignUpView.spZipcodeTextField.text, spSignUpView.spZipcodeTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    guard let county = spCreateAccountCounty.text, spCreateAccountCounty.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
+    guard let county = spSignUpView.spCountyTextField.text, spSignUpView.spCountyTextField.text?.count != 0 else { let fieldMustNotBeEmptyAlert = UIAlertController(title: "Cannot skip field", message: "This field must not be left empty", preferredStyle: .alert)
       fieldMustNotBeEmptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
         return }
     
     
-    if spCreateAccountConfirmPassword.text == spCreateAccountPassword.text {
+    if spSignUpView.spConfirmPassword.text == spSignUpView.spPasswordTextField.text {
       
       spController.createNewSP(withEmail: email , password: password)
       
@@ -206,30 +197,30 @@ class SPSignUpController: UIViewController, UITextFieldDelegate {
 extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    if textField == spCreateAccountTypeOfCompany {
-      spCreateAccountFirstName.becomeFirstResponder()
-    } else if textField == spCreateAccountFirstName{
-      spCreateAccountLastName.becomeFirstResponder()
-    } else if textField == spCreateAccountLastName {
-      spCreateAccountEmail.becomeFirstResponder()
-    } else if textField == spCreateAccountEmail {
-      spCreateAccountCellPhone.becomeFirstResponder()
-    } else if textField == spCreateAccountCellPhone {
-      spCreateAccountAddress.becomeFirstResponder()
-    } else if textField == spCreateAccountAddress {
-      spCreateAccountState.becomeFirstResponder()
-    } else if textField == spCreateAccountState {
-      spCreateAccountCity.becomeFirstResponder()
-    } else if textField == spCreateAccountCity {
-      spCreateAccountZip.becomeFirstResponder()
-    } else if textField == spCreateAccountZip {
-      spCreateAccountCounty.becomeFirstResponder()
-    } else if textField == spCreateAccountCounty {
-      spCreateAccountUsername.becomeFirstResponder()
-    } else if textField == spCreateAccountUsername {
-      spCreateAccountPassword.becomeFirstResponder()
-    } else if textField == spCreateAccountPassword {
-      spCreateAccountConfirmPassword.becomeFirstResponder()
+    if textField == spSignUpView.typeOfServiceTextField {
+      spSignUpView.spFirstNameTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spFirstNameTextField{
+      spSignUpView.spLastNameTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spLastNameTextField {
+      spSignUpView.spEmailTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spEmailTextField {
+      spSignUpView.spCellPhoneTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spCellPhoneTextField {
+      spSignUpView.spAddressTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spAddressTextField {
+      spSignUpView.spStateTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spStateTextField {
+      spSignUpView.spCityTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spCityTextField {
+     spSignUpView.spZipcodeTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spZipcodeTextField {
+      spSignUpView.spCountyTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spCountyTextField{
+      spSignUpView.spUsernameTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spUsernameTextField {
+      spSignUpView.spPasswordTextField.becomeFirstResponder()
+    } else if textField == spSignUpView.spPasswordTextField {
+      spSignUpView.spConfirmPassword.becomeFirstResponder()
     } else {
       textField.resignFirstResponder()
     }
@@ -260,9 +251,9 @@ extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    if currentTextField == spCreateAccountTypeOfCompany {
+    if currentTextField == spSignUpView.typeOfServiceTextField {
       return typeOfCompany.count
-    } else if currentTextField == spCreateAccountState {
+    } else if currentTextField == spSignUpView.spStateTextField {
       return states.count
     } else{
       return 0
@@ -270,9 +261,9 @@ extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    if currentTextField == spCreateAccountTypeOfCompany {
+    if currentTextField == spSignUpView.typeOfServiceTextField {
       return typeOfCompany[row]
-    } else if currentTextField == spCreateAccountState {
+    } else if currentTextField == spSignUpView.spStateTextField {
       return states[row]
     } else {
       return ""
@@ -282,11 +273,11 @@ extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
    
     
-    if currentTextField == spCreateAccountTypeOfCompany {
-      spCreateAccountTypeOfCompany.text = typeOfCompany[row]
+    if currentTextField == spSignUpView.typeOfServiceTextField {
+      spSignUpView.typeOfServiceTextField.text = typeOfCompany[row]
       self.view.endEditing(true)
-    } else if currentTextField == spCreateAccountState{
-    spCreateAccountState.text = states[row]
+    } else if currentTextField == spSignUpView.spStateTextField{
+    spSignUpView.spStateTextField.text = states[row]
       self.view.endEditing(true)
     }
   }
@@ -295,9 +286,9 @@ extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
     self.pickerView.dataSource = self
     self.pickerView.delegate = self
     currentTextField = textField
-    if currentTextField == spCreateAccountTypeOfCompany{
+    if currentTextField == spSignUpView.typeOfServiceTextField{
       currentTextField.inputView = pickerView
-    } else if currentTextField == spCreateAccountState {
+    } else if currentTextField == spSignUpView.spStateTextField {
       currentTextField.inputView = pickerView
     }
   }
@@ -317,8 +308,8 @@ extension SPSignUpController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func emptyFields(sender: UIAlertAction) -> Void {
-    self.spCreateAccountPassword.text = ""
-    self.spCreateAccountConfirmPassword.text = ""
+    self.spSignUpView.spPasswordTextField.text = ""
+    self.spSignUpView.spConfirmPassword.text = ""
   }
   
 }

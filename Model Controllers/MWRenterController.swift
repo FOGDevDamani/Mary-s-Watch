@@ -39,7 +39,7 @@ class MWRenterController: UIViewController {
   
   func createRenterData(firstName: String, lastName: String, email: String, cellPhone: String, address: String, state: String, city: String, zip: String, county: String, userName: String, password: String){
     
-    let newRenter = Renter(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: userName, password: password)
+	let newRenter = Renter(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: userName, password: password)
     
     
     newRenterReference.setData(newRenter.dictionary) { (error) in

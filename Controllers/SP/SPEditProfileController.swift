@@ -143,7 +143,7 @@ class SPEditProfileController: UIViewController, UITextFieldDelegate {
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    let newEditSP = ServiceProvider(typeOfCompany: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
+	let newEditSP = ServiceProvider(typeOfService: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: username, password: password)
     
     let spEditProfileReference = Firestore.firestore().collection("User").document("Service Provider")
     

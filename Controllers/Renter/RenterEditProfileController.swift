@@ -126,7 +126,7 @@ class RenterEditProfileController: UIViewController, UITextFieldDelegate {
       self.present(fieldMustNotBeEmptyAlert, animated: true, completion: nil)
       return }
     
-    let newEditRenter = Renter(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
+	let newEditRenter = Renter(firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: username, password: password)
     
     let renterEditProfileReference = Firestore.firestore().collection("User").document("Renter")
     

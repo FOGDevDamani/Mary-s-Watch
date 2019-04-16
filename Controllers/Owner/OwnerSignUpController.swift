@@ -70,7 +70,7 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate
   }
   
   private func configureTapGesture()
-	{
+  {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OwnerSignUpController.handleTap))
     view.addGestureRecognizer(tapGesture)
   }
@@ -82,7 +82,8 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate
   
   @objc func keyboardWillChange(notification: Notification)
 	{
-    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else
+	{
       return
     }
     
@@ -91,7 +92,8 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate
     if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder
       .keyboardWillChangeFrameNotification {
       ownerScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
-    } else {
+    } else
+	{
       ownerScrollView.contentInset = UIEdgeInsets.zero
     }
   }
@@ -187,14 +189,16 @@ class OwnerSignUpController: UIViewController, UITextFieldDelegate
 		}
       
       
-        if ownerSignUpView.ownerConfirmPasswordTextField.text == ownerSignUpView.ownerPasswordTextField.text {
+        if ownerSignUpView.ownerConfirmPasswordTextField.text == ownerSignUpView.ownerPasswordTextField.text
+		{
           
           ownerController.createNewOwner(email: email, password: password)
           
           ownerController.createOwnerData(typeOfOwner: typeOfOwner, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: username, password: password)
           
          showAlert(title: "Congratulations! Your account has been setup." , message: "Thank you for setting up an account. Please check your email to verify your account. Login to manage your maintenance process!", style: .alert, handler: proceedToOwnerLogin)
-        } else {
+        } else
+		{
            showAlert(title: "Passwords must match", message: "Confirmation password entered does not match the previous one. Please try again", style: .alert, handler: emptyFields)
         }
   

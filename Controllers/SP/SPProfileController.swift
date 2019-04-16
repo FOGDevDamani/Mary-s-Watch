@@ -94,7 +94,7 @@ class SPProfileController: UIViewController, UITableViewDelegate, UITableViewDat
     
     let sp = spNameArray[indexPath.row]
     
-    cell.spProfileDisplayName.text = "Welcome \(sp.userName)"
+	cell.spProfileDisplayName.text = "Welcome \(sp.username)"
     
     return cell
   }

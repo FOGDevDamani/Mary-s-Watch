@@ -78,7 +78,7 @@ class RenterProfileController: UIViewController, UITableViewDelegate, UITableVie
     
     let renter = namesArray[indexPath.row]
     
-    cell.renterProfileLabel.text = "Welcome \(renter.userName)"
+	cell.renterProfileLabel.text = "Welcome \(renter.username)"
     
     return cell
   }

@@ -43,9 +43,9 @@ class MWSPController: UIViewController {
   
   
   
-  func createSPData(typeOfCompany: String, firstName: String, lastName: String, email: String, cellPhone: String, address: String, state: String, city: String, zip: String, county: String, userName: String, password: String){
+  func createSPData(typeOfService: String, firstName: String, lastName: String, email: String, cellPhone: String, address: String, state: String, city: String, zip: String, county: String, userName: String, password: String){
     
-    let newSP = ServiceProvider(typeOfCompany: typeOfCompany, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zip: zip, county: county, userName: userName, password: password)
+	let newSP = ServiceProvider(typeOfService: typeOfService, firstName: firstName, lastName: lastName, email: email, cellPhone: cellPhone, address: address, state: state, city: city, zipcode: zip, county: county, username: userName, password: password)
     
     
     newSPReference.setData(newSP.dictionary) { (error) in

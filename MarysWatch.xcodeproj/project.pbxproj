@@ -73,7 +73,6 @@
 		CB3DB9AF22189CC3004A28FB /* OwnerCompanyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */; };
 		CB59D105222993CE00C80548 /* MWSPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D104222993CE00C80548 /* MWSPController.swift */; };
 		CB59D1072229943900C80548 /* MWRenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1062229943900C80548 /* MWRenterController.swift */; };
-		CB59D1092229947300C80548 /* MWOwnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D1082229947300C80548 /* MWOwnerController.swift */; };
 		CB59D10B222A367600C80548 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59D10A222A367500C80548 /* AuthenticationManager.swift */; };
 		CB5ACA4B2237267000A1B812 /* MWSPCompanyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */; };
 		CB7561ED22132BD000A30C37 /* Renter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7561EC22132BD000A30C37 /* Renter.swift */; };
@@ -189,7 +188,6 @@
 		CB3DB9AE22189CC3004A28FB /* OwnerCompanyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCompanyDetails.swift; sourceTree = "<group>"; };
 		CB59D104222993CE00C80548 /* MWSPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWSPController.swift; sourceTree = "<group>"; };
 		CB59D1062229943900C80548 /* MWRenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWRenterController.swift; sourceTree = "<group>"; };
-		CB59D1082229947300C80548 /* MWOwnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWOwnerController.swift; sourceTree = "<group>"; };
 		CB59D10A222A367500C80548 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWSPCompanyDetailsController.swift; sourceTree = "<group>"; };
 		CB7561EC22132BD000A30C37 /* Renter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renter.swift; sourceTree = "<group>"; };
@@ -503,7 +501,6 @@
 			children = (
 				CB59D104222993CE00C80548 /* MWSPController.swift */,
 				CB59D1062229943900C80548 /* MWRenterController.swift */,
-				CB59D1082229947300C80548 /* MWOwnerController.swift */,
 				CB59D10A222A367500C80548 /* AuthenticationManager.swift */,
 				CB5ACA4A2237267000A1B812 /* MWSPCompanyDetailsController.swift */,
 			);
@@ -822,7 +819,6 @@
 				CB19D5B92211C5A600040989 /* SPEditProfileController.swift in Sources */,
 				CB59D10B222A367600C80548 /* AuthenticationManager.swift in Sources */,
 				CB38EF7B220EDAF200FE3936 /* RenterEditProfileController.swift in Sources */,
-				CB59D1092229947300C80548 /* MWOwnerController.swift in Sources */,
 				BF8E3F332113C47100B1F133 /* OwnerAssetsViewCell.swift in Sources */,
 				CB19D5BF2211C60600040989 /* SpTeamDisplayController.swift in Sources */,
 				BF8E3F3B2113C47100B1F133 /* CompanyDetailsController.swift in Sources */,

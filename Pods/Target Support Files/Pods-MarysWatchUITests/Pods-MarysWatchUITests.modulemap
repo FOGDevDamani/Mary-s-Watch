@@ -1,0 +1,6 @@
+framework module Pods_MarysWatchUITests {
+  umbrella header "Pods-MarysWatchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

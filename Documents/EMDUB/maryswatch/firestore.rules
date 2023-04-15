@@ -1,0 +1,174 @@
+service cloud.firestore {
+	match /databases/{database}/documents {
+    // Allow only authenticated content owners access
+    match /Teams/{document} {
+      allow read, write: if request.auth != null 
+    }
+     match /Team%20Members/{document} {
+      allow read, write: if request.auth != null 
+    }
+    match /Product/{document} {
+      allow read, write: if request.auth != null 
+    }
+    match /ProductProfileImages/{document} {
+      allow read, write: if request.auth != null 
+    }
+    function reviewFieldsAreValidTypes(docData) {
+       return docData.teamMembers is string &&
+            docData.address is string &&
+            docData.get('laborers', '') is string &&
+            docData.get('members', []) is list;
+    }
+    match /TestCollection/{document} {
+    	allow read,write: if request.auth != null
+    }
+    match /OwnerTeamLocations/{document} {
+      allow read: if request.auth != null 
+    }
+    match /RenterTeamLocations/{document} {
+      allow read: if request.auth != null 
+    }
+    match /SPTeamLocations/{document} {
+      allow read: if request.auth != null 
+    }
+    match /user/{document} {
+      allow read: if request.auth != null 
+      allow write: if request.auth != null
+      allow update: if !resource.data.points < 50
+    }
+    match /RenterSupportTickets/{document} {
+      allow read, write: if request.auth != null 
+    }
+    match /SPSupportTickets/{document} {
+      allow read, write: if request.auth != null  
+      // allow update: if reviewFieldsAreValidTypes(request.resource.data) 
+    }
+    match /tokens/{document} {
+    	allow write
+    }
+    
+    match /Store/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /Payments/{document} {
+    	allow read: if request.auth != null 
+    }
+    
+    match /OwnerSupportTickets/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /BehaviorTickets/{document} {
+    	allow read: if request.auth != null 
+    }
+    
+    match /Comments/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /Reviews/{document} {
+    	allow read: if request.auth != null 
+    }
+    
+    match /Referrals/{document} {
+    	allow read: if request.auth != null 
+    }
+    
+    match /messages/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /IdsFromChats/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /BehaviorTickets/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /Customers/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /Assets/{document} {
+    	allow read, write: if request.auth != null 
+    }
+    
+    match /RenterTeams/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /OwnerTeams/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /PublicTeams/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /PublicTeamMembers/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /NewsCollection/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Payments/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /SupportTickets/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /BehaviorTickets/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Comments/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Notes/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Reviews/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Referrals/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /SPTeams/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /Transactions/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /RenterTeamTeamMembers/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /OwnerTeamTeamMembers/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /SPTeamTeamMembers/{document} {
+    	allow read, write: if request.auth != null
+    }
+    
+    match /OwnerCustomers/{document} {
+    allow read,write: if request.auth != null
+    }
+    
+    match /SPCustomers/{document} {
+    allow read,write: if request.auth != null
+    }
+  }
+}

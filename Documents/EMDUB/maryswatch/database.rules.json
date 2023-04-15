@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "messages": {
+			"$messages": {
+        ".read": "auth != null && $messages.contains(auth.uid)",
+        ".write": "auth != null && $messages.contains(auth.uid)"
+      }
+    }
+  }
+}

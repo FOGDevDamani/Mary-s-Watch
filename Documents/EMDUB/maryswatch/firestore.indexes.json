@@ -1,0 +1,47 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "OwnerTeams",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ownerTeamId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdOn",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "RenterSupportTickets",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "renterId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdOn",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Teams",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "teamId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdOn",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
